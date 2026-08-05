@@ -1,10 +1,10 @@
 {
   "name": "crohnoz-forge",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "private": true,
   "description": "Interactive public innovation experience for Crohnoz Labs.",
   "scripts": {
-    "check:syntax": "node --check app.js && node --check forge-v2.js && node --check forge-strategy.js && node --check forge-stories.js && node --check forge-dashboard.js && node --check forge-intelligence-core.js && node --check forge-intelligence.js",
+    "check:syntax": "node --check app.js && node --check forge-v2.js && node --check forge-strategy.js && node --check forge-stories.js && node --check forge-dashboard.js && node --check forge-intelligence-core.js && node --check forge-intelligence.js && node --check forge-refinements.js",
     "test": "node tests/quality.test.mjs",
     "check": "npm run check:syntax && npm test"
   },
