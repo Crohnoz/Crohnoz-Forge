@@ -238,6 +238,7 @@ const stylesheetAssets = [
   ['./strategy.css', 'forgeStrategy'],
   ['./stories.css', 'forgeStories'],
   ['./dashboard.css', 'forgeDashboard'],
+  ['./intelligence.css', 'forgeIntelligence'],
 ];
 
 stylesheetAssets.forEach(([href, dataKey]) => {
@@ -262,4 +263,9 @@ enhancementScript.addEventListener('load', () => {
   loadScript('./forge-strategy.js', 'forgeStrategy');
   loadScript('./forge-stories.js', 'forgeStories');
   loadScript('./forge-dashboard.js', 'forgeDashboard');
+
+  const intelligenceCoreScript = loadScript('./forge-intelligence-core.js', 'forgeIntelligenceCore');
+  intelligenceCoreScript.addEventListener('load', () => {
+    loadScript('./forge-intelligence.js', 'forgeIntelligence');
+  });
 });
