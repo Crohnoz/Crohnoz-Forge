@@ -268,13 +268,16 @@ enhancementScript.addEventListener('load', () => {
 
   const refinementsScript = loadScript('./forge-refinements.js', 'forgeRefinements');
   refinementsScript.addEventListener('load', () => {
-    const workspaceCoreScript = loadScript('./forge-workspace-core.js', 'forgeWorkspaceCore');
-    workspaceCoreScript.addEventListener('load', () => {
-      const workspaceScript = loadScript('./forge-workspace.js', 'forgeWorkspace');
-      workspaceScript.addEventListener('load', () => {
-        const analyticsCoreScript = loadScript('./forge-analytics-core.js', 'forgeAnalyticsCore');
-        analyticsCoreScript.addEventListener('load', () => {
-          loadScript('./forge-analytics.js', 'forgeAnalytics');
+    const restoreGuardScript = loadScript('./forge-workspace-restore-guard.js', 'forgeWorkspaceRestoreGuard');
+    restoreGuardScript.addEventListener('load', () => {
+      const workspaceCoreScript = loadScript('./forge-workspace-core.js', 'forgeWorkspaceCore');
+      workspaceCoreScript.addEventListener('load', () => {
+        const workspaceScript = loadScript('./forge-workspace.js', 'forgeWorkspace');
+        workspaceScript.addEventListener('load', () => {
+          const analyticsCoreScript = loadScript('./forge-analytics-core.js', 'forgeAnalyticsCore');
+          analyticsCoreScript.addEventListener('load', () => {
+            loadScript('./forge-analytics.js', 'forgeAnalytics');
+          });
         });
       });
     });
