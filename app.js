@@ -240,6 +240,7 @@ const stylesheetAssets = [
   ['./dashboard.css', 'forgeDashboard'],
   ['./intelligence.css', 'forgeIntelligence'],
   ['./refinements.css', 'forgeRefinements'],
+  ['./workspace-privacy.css', 'forgeWorkspacePrivacy'],
 ];
 
 stylesheetAssets.forEach(([href, dataKey]) => {
@@ -264,7 +265,20 @@ enhancementScript.addEventListener('load', () => {
   loadScript('./forge-strategy.js', 'forgeStrategy');
   loadScript('./forge-stories.js', 'forgeStories');
   loadScript('./forge-dashboard.js', 'forgeDashboard');
-  loadScript('./forge-refinements.js', 'forgeRefinements');
+
+  const refinementsScript = loadScript('./forge-refinements.js', 'forgeRefinements');
+  refinementsScript.addEventListener('load', () => {
+    const workspaceCoreScript = loadScript('./forge-workspace-core.js', 'forgeWorkspaceCore');
+    workspaceCoreScript.addEventListener('load', () => {
+      const workspaceScript = loadScript('./forge-workspace.js', 'forgeWorkspace');
+      workspaceScript.addEventListener('load', () => {
+        const analyticsCoreScript = loadScript('./forge-analytics-core.js', 'forgeAnalyticsCore');
+        analyticsCoreScript.addEventListener('load', () => {
+          loadScript('./forge-analytics.js', 'forgeAnalytics');
+        });
+      });
+    });
+  });
 
   const intelligenceCoreScript = loadScript('./forge-intelligence-core.js', 'forgeIntelligenceCore');
   intelligenceCoreScript.addEventListener('load', () => {
