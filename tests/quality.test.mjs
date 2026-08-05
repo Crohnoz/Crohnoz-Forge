@@ -2,10 +2,11 @@ import { readFile } from 'node:fs/promises';
 import assert from 'node:assert/strict';
 
 const root = new URL('../', import.meta.url);
-const [html, app, enhancementApp, enhancementCss] = await Promise.all([
+const [html, app, enhancementApp, baseCss, enhancementCss] = await Promise.all([
   readFile(new URL('index.html', root), 'utf8'),
   readFile(new URL('app.js', root), 'utf8'),
   readFile(new URL('forge-v2.js', root), 'utf8'),
+  readFile(new URL('styles.css', root), 'utf8'),
   readFile(new URL('enhancements.css', root), 'utf8'),
 ]);
 
@@ -22,7 +23,7 @@ for (const feature of ['INTERACTIVE PREVIEW', 'VALIDATE BEFORE BUILDING', 'annua
 }
 
 assert.ok(enhancementCss.includes('@media (max-width: 760px)'), 'Mobile adaptation rules are required');
-assert.match(html, /prefers-reduced-motion/, 'Reduced-motion support must remain present');
+assert.match(baseCss, /prefers-reduced-motion/, 'Reduced-motion support must remain present');
 assert.match(html, /data-netlify=["']true["']/, 'Netlify form detection attribute is required');
 assert.match(html, /netlify-honeypot=/, 'Netlify honeypot is required');
 
