@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#11100f" />
+  <meta name="description" content="Crohnoz Forge transforma ideas, problemas operacionales y conceptos poco convencionales en blueprints, prototipos y productos digitales revisables." />
+  <meta property="og:title" content="Crohnoz Forge — Convierte una idea en un producto" />
+  <meta property="og:description" content="Describe un problema, forja un blueprint interactivo y solicita una revisión humana de Crohnoz Labs." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://crohnoz-forge.netlify.app/" />
+  <link rel="canonical" href="https://crohnoz-forge.netlify.app/" />
+  <link rel="icon" href="/assets/forge-mark.svg" type="image/svg+xml" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="stylesheet" href="/styles.css" />
+  <title>Crohnoz Forge — Convierte una idea en un producto</title>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Saltar al contenido</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="#top" aria-label="Crohnoz Forge, inicio">
+      <img src="/assets/forge-mark.svg" alt="" width="42" height="42" />
+      <span><strong>CROHNOZ</strong><b>FORGE</b></span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <a href="#forge">Forjar</a><a href="#blueprint">Blueprint</a><a href="#stories">Historias</a><a href="#review">Revisión</a>
+    </nav>
+    <a class="header-cta" href="#forge">Forjar una idea</a>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span>LABORATORIO DE INNOVACIÓN</span><i>Ideas → productos</i></p>
+        <h1 id="hero-title">Tu idea es materia prima.<br /><em>Forjemos algo útil.</em></h1>
+        <p class="hero-lead">Describe un problema, una oportunidad o una idea poco convencional. Forge la convierte en un blueprint exploratorio que puedes revisar, ajustar y presentar a Crohnoz Labs.</p>
+        <div class="hero-actions"><a class="button button--primary" href="#forge">Comenzar ahora <span aria-hidden="true">↗</span></a><a class="button button--ghost" href="#blueprint">Ver cómo funciona</a></div>
+        <ul class="hero-trust" aria-label="Principios del servicio"><li><span>01</span> Sin promesas automáticas</li><li><span>02</span> Privacidad por defecto</li><li><span>03</span> Revisión humana</li></ul>
+      </div>
+      <div class="forge-visual" aria-label="Martillo digital golpeando un yunque">
+        <div class="grid-plane"></div><div class="spark spark--1"></div><div class="spark spark--2"></div><div class="spark spark--3"></div>
+        <div class="hammer" data-hammer><span class="hammer-head"></span><span class="hammer-handle"></span></div>
+        <div class="anvil"><span class="anvil-top"></span><span class="anvil-body"></span><span class="anvil-base"></span></div>
+        <div class="visual-readout"><small>FORGE CORE</small><strong>READY</strong><span><i></i> Human review enabled</span></div>
+      </div>
+    </section>
+
+    <section class="process-strip" aria-label="Proceso Crohnoz Forge">
+      <article><span>01</span><div><strong>Describe</strong><small>Problema, usuarios y resultado.</small></div></article>
+      <article><span>02</span><div><strong>Golpea</strong><small>Genera un blueprint exploratorio.</small></div></article>
+      <article><span>03</span><div><strong>Refina</strong><small>Ajusta alcance, automatización e impacto.</small></div></article>
+      <article><span>04</span><div><strong>Revisa</strong><small>Solicita evaluación humana.</small></div></article>
+    </section>
+
+    <section class="forge-section" id="forge" aria-labelledby="forge-title">
+      <div class="section-heading"><p>FORGE AN IDEA</p><h2 id="forge-title">Cuéntanos qué necesita cambiar.</h2><span>No escribas contraseñas, claves, datos personales sensibles ni información confidencial que no estés autorizado a compartir.</span></div>
+      <div class="forge-shell">
+        <form class="idea-form" id="idea-form" novalidate>
+          <div class="stepper" aria-label="Progreso del formulario"><button type="button" class="is-active" data-step-button="1" aria-current="step"><span>1</span> Contexto</button><button type="button" data-step-button="2"><span>2</span> Prioridades</button><button type="button" data-step-button="3"><span>3</span> Consentimiento</button></div>
+          <div class="form-step is-active" data-step="1">
+            <label class="field field--wide"><span>¿Qué problema, idea u oportunidad quieres explorar?</span><textarea id="idea" name="idea" rows="6" maxlength="900" required placeholder="Ej.: En nuestra bodega registramos entregas en planillas distintas y después cuesta demostrar quién recibió cada equipo..."></textarea><small><b data-count="idea">0</b>/900 caracteres</small></label>
+            <div class="field-grid"><label class="field"><span>¿Quién vive este problema?</span><input id="audience" name="audience" maxlength="120" required placeholder="Ej.: encargados de bodega y supervisores" /></label><label class="field"><span>¿Qué resultado sería valioso?</span><input id="outcome" name="outcome" maxlength="140" required placeholder="Ej.: trazabilidad verificable por equipo" /></label></div>
+            <fieldset class="choice-group"><legend>Estado actual</legend><label><input type="radio" name="stage" value="idea" checked /><span>Idea inicial</span></label><label><input type="radio" name="stage" value="manual" /><span>Proceso manual</span></label><label><input type="radio" name="stage" value="prototype" /><span>Prototipo existente</span></label><label><input type="radio" name="stage" value="system" /><span>Sistema en uso</span></label></fieldset>
+          </div>
+          <div class="form-step" data-step="2" hidden>
+            <fieldset class="priority-grid"><legend>¿Qué importa más en esta primera exploración?</legend>
+              <label><input type="checkbox" name="priority" value="speed" checked /><span><b>Velocidad</b><small>Reducir tiempos y pasos.</small></span></label><label><input type="checkbox" name="priority" value="traceability" /><span><b>Trazabilidad</b><small>Registrar estados y responsables.</small></span></label><label><input type="checkbox" name="priority" value="sales" /><span><b>Ventas</b><small>Mejorar captación o conversión.</small></span></label><label><input type="checkbox" name="priority" value="experience" /><span><b>Experiencia</b><small>Hacer el flujo más intuitivo.</small></span></label><label><input type="checkbox" name="priority" value="security" /><span><b>Seguridad</b><small>Controlar acceso y evidencia.</small></span></label><label><input type="checkbox" name="priority" value="analytics" /><span><b>Analítica</b><small>Convertir actividad en decisiones.</small></span></label>
+            </fieldset>
+            <div class="field-grid"><label class="field"><span>Volumen aproximado</span><select id="volume" name="volume"><option value="small">Menos de 100 casos al mes</option><option value="medium" selected>100–1.000 casos al mes</option><option value="large">Más de 1.000 casos al mes</option></select></label><label class="field"><span>Sensibilidad de los datos</span><select id="sensitivity" name="sensitivity"><option value="low">Baja — información pública o comercial</option><option value="medium" selected>Media — información interna</option><option value="high">Alta — datos personales o regulados</option></select></label></div>
+            <label class="field field--wide"><span>Restricciones o contexto adicional <i>opcional</i></span><textarea id="constraints" name="constraints" rows="4" maxlength="500" placeholder="Ej.: debe funcionar desde teléfonos Android, con conectividad intermitente y perfiles por rol."></textarea><small><b data-count="constraints">0</b>/500 caracteres</small></label>
+          </div>
+          <div class="form-step" data-step="3" hidden>
+            <div class="privacy-card"><span class="privacy-icon">◎</span><div><strong>Tu información no se publica automáticamente.</strong><p>Este blueprint se genera en tu navegador. Solo se enviará información si posteriormente completas el formulario de revisión humana.</p></div></div>
+            <label class="consent-row"><input id="safe-consent" type="checkbox" required /><span>Confirmo que no incluí contraseñas, credenciales, datos personales sensibles ni información confidencial no autorizada.</span></label>
+            <label class="consent-row"><input id="exploratory-consent" type="checkbox" required /><span>Entiendo que el resultado es exploratorio y no garantiza factibilidad, plazo, precio, confidencialidad ni propiedad intelectual.</span></label>
+            <div class="consent-note"><strong>Publicación desactivada por defecto</strong><p>Una futura Forge Story requerirá consentimiento independiente y una revisión expresa de la persona u organización involucrada.</p></div>
+          </div>
+          <div class="form-actions"><button class="button button--ghost" id="back-step" type="button" hidden>Volver</button><button class="button button--primary" id="next-step" type="button">Continuar</button><button class="button button--forge" id="forge-button" type="submit" hidden><span class="button-anvil" aria-hidden="true">◆</span> Golpear la Forge</button></div>
+          <p class="form-error" id="form-error" role="alert" hidden></p>
+        </form>
+        <aside class="forge-sidecard" aria-label="Resumen de seguridad"><div class="sidecard-top"><small>SAFE PRACTICES</small><span>ACTIVE</span></div><h3>Exploración segura desde el primer paso.</h3><ul><li><i>✓</i><span><b>Sin cuenta obligatoria</b> para generar el blueprint.</span></li><li><i>✓</i><span><b>Sin almacenamiento automático</b> del contenido escrito.</span></li><li><i>✓</i><span><b>Supuestos visibles</b> separados de datos entregados.</span></li><li><i>✓</i><span><b>Decisión humana</b> antes de cualquier compromiso.</span></li></ul><a href="/privacy.html">Leer política de privacidad <span aria-hidden="true">→</span></a></aside>
+      </div>
+    </section>
+
+    <section class="forge-transition" id="forge-transition" aria-live="polite" hidden><div class="transition-hammer"><span></span><b></b></div><div class="transition-anvil"><span></span><b></b></div><div class="transition-sparks"><i></i><i></i><i></i><i></i><i></i></div><p>Golpeando la materia prima…</p><small>Organizando problema, usuarios, alcance, riesgos y supuestos.</small></section>
+
+    <section class="blueprint-section" id="blueprint" aria-labelledby="blueprint-title">
+      <div class="section-heading section-heading--split"><div><p>FORGE BLUEPRINT</p><h2 id="blueprint-title">Una estructura para pensar antes de construir.</h2></div><span>El ejemplo inicial es ficticio. Completa el formulario para reemplazarlo con tu propia exploración.</span></div>
+      <div class="blueprint-shell" data-blueprint>
+        <header class="blueprint-header"><div><span class="status-dot"></span><small>BLUEPRINT EXPLORATORIO</small></div><strong id="bp-title">Trazabilidad simple para una bodega pequeña</strong><p id="bp-summary">Una propuesta para registrar recepción, movimiento y entrega de equipos sin depender de planillas dispersas.</p><div class="blueprint-tags" id="bp-tags"><span>Operaciones</span><span>Trazabilidad</span><span>Mobile-first</span></div></header>
+        <div class="blueprint-grid">
+          <article class="blueprint-card blueprint-card--problem"><small>01 · PROBLEMA</small><h3>Qué necesita cambiar</h3><p id="bp-problem">La información de cada equipo se reparte entre mensajes, planillas y recuerdos, dificultando demostrar responsables y estados.</p><div class="source-label"><span>Dato entregado</span><b>Editable</b></div></article>
+          <article class="blueprint-card"><small>02 · USUARIOS</small><h3>Quién participa</h3><ul id="bp-users"><li>Encargado de recepción</li><li>Operador de bodega</li><li>Supervisor</li></ul><div class="source-label source-label--assumption"><span>Supuesto inicial</span><b>Validar</b></div></article>
+          <article class="blueprint-card blueprint-card--wide"><small>03 · FLUJO PROPUESTO</small><h3>Cómo podría funcionar</h3><ol class="flow-list" id="bp-flow"><li><span>1</span><div><b>Registrar</b><small>Escanear o ingresar el identificador.</small></div></li><li><span>2</span><div><b>Asignar</b><small>Definir estado, ubicación y responsable.</small></div></li><li><span>3</span><div><b>Evidenciar</b><small>Adjuntar fotografía o confirmación.</small></div></li><li><span>4</span><div><b>Supervisar</b><small>Resolver excepciones y generar reportes.</small></div></li></ol></article>
+          <article class="blueprint-card"><small>04 · MVP</small><h3>Primera versión</h3><ul class="check-list" id="bp-features"><li>Registro por identificador</li><li>Estados y responsables</li><li>Historial básico</li><li>Exportación de reporte</li></ul></article>
+          <article class="blueprint-card"><small>05 · PANTALLAS</small><h3>Superficies clave</h3><div class="screen-list" id="bp-screens"><span>Resumen</span><span>Registrar</span><span>Detalle</span><span>Incidencias</span></div></article>
+          <article class="blueprint-card"><small>06 · RIESGOS</small><h3>Qué puede fallar</h3><ul id="bp-risks"><li>Identificadores duplicados</li><li>Adopción incompleta del equipo</li><li>Conectividad intermitente</li></ul><div class="source-label source-label--risk"><span>Riesgo inferido</span><b>Mitigar</b></div></article>
+          <article class="blueprint-card"><small>07 · MÉTRICAS</small><h3>Cómo medir valor</h3><ul id="bp-metrics"><li>Tiempo de registro</li><li>Casos sin responsable</li><li>Incidencias resueltas</li></ul></article>
+        </div>
+        <section class="intelligence-panel" aria-labelledby="intelligence-title">
+          <div class="intelligence-heading"><div><p>FORGE INTELLIGENCE</p><h3 id="intelligence-title">Ajusta el escenario y observa el impacto.</h3></div><span>Cálculo demostrativo; no es una cotización ni una estimación contractual.</span></div>
+          <div class="slider-grid"><label><span>Alcance inicial <b id="scope-value">45%</b></span><input id="scope-slider" type="range" min="15" max="100" value="45" /><small>Más alcance aumenta cobertura y complejidad.</small></label><label><span>Automatización <b id="automation-value">50%</b></span><input id="automation-slider" type="range" min="0" max="100" value="50" /><small>Más automatización exige reglas y excepciones claras.</small></label><label><span>Integraciones <b id="integration-value">25%</b></span><input id="integration-slider" type="range" min="0" max="100" value="25" /><small>Conectar servicios externos eleva dependencias.</small></label></div>
+          <div class="score-grid"><article><small>IMPACTO POTENCIAL</small><strong id="impact-score">72</strong><span>/100</span><div><i id="impact-bar"></i></div></article><article><small>COMPLEJIDAD RELATIVA</small><strong id="complexity-score">46</strong><span>/100</span><div><i id="complexity-bar"></i></div></article><article><small>PRIMERA HIPÓTESIS</small><strong id="hypothesis-label">Validable</strong><p id="hypothesis-note">Conviene prototipar el flujo principal antes de sumar integraciones.</p></article></div>
+          <div class="simulator"><div><small>SIMULADOR DE EFICIENCIA</small><h4>¿Cuánto tiempo podría liberar?</h4><p>Ingresa supuestos aproximados. Los resultados permanecen en tu navegador.</p></div><label>Casos al mes<input id="monthly-cases" type="number" min="1" max="100000" value="450" /></label><label>Minutos ahorrados por caso<input id="minutes-saved" type="number" min="0" max="480" value="4" /></label><article><small>HORAS LIBERADAS / MES</small><strong id="hours-saved">30 h</strong><span id="annual-hours">360 h al año</span></article></div>
+        </section>
+        <footer class="blueprint-footer"><div><strong>¿Este blueprint refleja el problema?</strong><span>Ajusta el escenario o solicita una revisión humana para llevarlo a una evaluación real.</span></div><div><button class="button button--ghost" id="reset-blueprint" type="button">Restablecer ejemplo</button><a class="button button--primary" href="#review">Solicitar Forge Review</a></div></footer>
+      </div>
+    </section>
+
+    <section class="stories-section" id="stories" aria-labelledby="stories-title">
+      <div class="section-heading section-heading--split"><div><p>FORGE STORIES</p><h2 id="stories-title">De problema difuso a resultado visible.</h2></div><span>Historias demostrativas y ficticias. Una historia real solo se publica con autorización expresa y control del cliente.</span></div>
+      <div class="stories-grid">
+        <article><header><span>CASO FICTICIO</span><b>OPERACIONES</b></header><h3>“Dejamos de perseguir planillas distintas.”</h3><p>Una distribuidora imaginaria necesitaba seguir entregas entre bodega y sucursales. El blueprint priorizó responsables, evidencia y excepciones.</p><div><span><small>ANTES</small><b>4 planillas</b></span><span><small>DESPUÉS</small><b>1 flujo</b></span></div><footer>Resultado simulado · No corresponde a un cliente real</footer></article>
+        <article><header><span>CASO FICTICIO</span><b>SALUD</b></header><h3>“La agenda dejó de estar separada de la atención.”</h3><p>Una consulta ficticia exploró una ficha conectada con citas, consentimientos y seguimiento, sin incorporar datos clínicos reales.</p><div><span><small>FOCO</small><b>Continuidad</b></span><span><small>MVP</small><b>4 módulos</b></span></div><footer>Resultado simulado · No corresponde a un cliente real</footer></article>
+        <article><header><span>CASO FICTICIO</span><b>COMERCIO</b></header><h3>“El stock empezó a explicar qué comprar.”</h3><p>Un minimarket imaginario convirtió ventas, merma y reposición en un tablero sencillo para decidir con evidencia diaria.</p><div><span><small>SEÑAL</small><b>Rotación</b></span><span><small>DECISIÓN</small><b>Reposición</b></span></div><footer>Resultado simulado · No corresponde a un cliente real</footer></article>
+      </div>
+    </section>
+
+    <section class="review-section" id="review" aria-labelledby="review-title">
+      <div class="review-copy"><p>FORGE REVIEW</p><h2 id="review-title">La IA propone.<br />El laboratorio evalúa.</h2><span>Envía un resumen para una revisión humana inicial. No constituye aceptación del proyecto, cotización ni acuerdo de confidencialidad.</span><ul><li><i>01</i><div><strong>Problema</strong><small>¿Está claramente definido?</small></div></li><li><i>02</i><div><strong>Viabilidad</strong><small>¿Qué debemos validar primero?</small></div></li><li><i>03</i><div><strong>Próximo paso</strong><small>¿Diagnóstico, prototipo o proyecto?</small></div></li></ul></div>
+      <form class="review-form" name="forge-review" method="POST" data-netlify="true" netlify-honeypot="website" action="/?review=sent#review">
+        <input type="hidden" name="form-name" value="forge-review" /><p class="honeypot"><label>No llenar: <input name="website" /></label></p><input type="hidden" id="review-blueprint" name="blueprint_summary" value="Blueprint no generado todavía" />
+        <div class="field-grid"><label class="field"><span>Nombre</span><input name="name" autocomplete="name" maxlength="100" required /></label><label class="field"><span>Correo</span><input name="email" type="email" autocomplete="email" maxlength="160" required /></label></div>
+        <label class="field"><span>Organización o proyecto <i>opcional</i></span><input name="organization" maxlength="140" /></label><label class="field"><span>¿Qué te gustaría revisar?</span><textarea name="message" rows="5" maxlength="1200" required placeholder="Resume el problema y qué esperas validar con Crohnoz Labs."></textarea></label>
+        <label class="consent-row consent-row--compact"><input type="checkbox" name="privacy_consent" value="accepted" required /><span>Acepto que Crohnoz Labs use estos datos únicamente para responder esta solicitud, según la <a href="/privacy.html">política de privacidad</a>.</span></label><label class="consent-row consent-row--compact"><input type="checkbox" name="publication_consent" value="not-authorized" checked disabled /><span>No autorizo publicación. Cualquier Forge Story requerirá un consentimiento posterior e independiente.</span></label>
+        <button class="button button--forge" type="submit">Enviar a revisión humana <span aria-hidden="true">↗</span></button><p class="review-status" id="review-status" role="status" hidden>Solicitud recibida. Revisaremos la información enviada sin publicarla automáticamente.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="brand brand--footer"><img src="/assets/forge-mark.svg" alt="" width="38" height="38" /><span><strong>CROHNOZ</strong><b>FORGE</b></span></div><p>Una iniciativa de Crohnoz Labs para transformar problemas reales en productos revisables.</p><nav aria-label="Enlaces legales"><a href="https://crohnozlabs.cl">Crohnoz Labs</a><a href="/privacy.html">Privacidad</a><a href="https://github.com/Crohnoz/Crohnoz-Forge">Repositorio</a></nav><small>© 2026 Crohnoz Labs. La generación automática no garantiza factibilidad, precio, plazo, confidencialidad ni propiedad.</small></footer>
+  <script src="/app.js" defer></script>
+</body>
+</html>
