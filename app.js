@@ -232,3 +232,14 @@ refineButtons.forEach((button) => {
 
 document.querySelector('#year').textContent = new Date().getFullYear();
 updateSimulator();
+
+const enhancementStylesheet = document.createElement('link');
+enhancementStylesheet.rel = 'stylesheet';
+enhancementStylesheet.href = './enhancements.css';
+enhancementStylesheet.dataset.forgeEnhancements = 'true';
+document.head.appendChild(enhancementStylesheet);
+
+const enhancementScript = document.createElement('script');
+enhancementScript.src = './forge-v2.js';
+enhancementScript.defer = true;
+document.body.appendChild(enhancementScript);
