@@ -1,0 +1,10 @@
+{
+  "name": "Crohnoz Forge",
+  "short_name": "Forge",
+  "description": "Convierte ideas y problemas reales en blueprints exploratorios.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#11100f",
+  "theme_color": "#11100f",
+  "icons": [{ "src": "/assets/forge-mark.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
