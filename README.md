@@ -2,60 +2,73 @@
 
 **Ideas are raw material. Crohnoz Forge turns them into products.**
 
-Crohnoz Forge is the public innovation branch of Crohnoz Labs. It invites people, teams, and organizations to submit unfinished ideas, unusual concepts, and real operational problems, then transforms them into structured product blueprints, interactive previews, prototypes, and—when viable—real digital products.
+Crohnoz Forge is the public innovation branch of Crohnoz Labs. The MVP transforms a plain-language problem or idea into an editable, exploratory product blueprint without requiring an account or automatically publishing the supplied information.
 
-## Product vision
+## Public experience
 
-A visitor should be able to:
+- Three-step idea intake with sensitive-data warnings.
+- Browser-side blueprint generation.
+- Proposed users, workflow, MVP features, screens, risks and metrics.
+- Transparent labels separating supplied data, assumptions and inferred risks.
+- Scope, automation and integration controls.
+- Efficiency simulator using user-entered assumptions.
+- Fictional Forge Stories clearly marked as demonstrations.
+- Human Forge Review request through Netlify Forms.
+- Independent privacy policy and publication consent disabled by default.
 
-1. Describe an idea or problem in plain language.
-2. Answer a small set of adaptive discovery questions.
-3. “Strike the Forge” and receive an exploratory product blueprint.
-4. Explore proposed users, workflows, features, screens, assumptions, risks, and MVP scope.
-5. Refine the concept interactively.
-6. Submit it for a human Forge Review by Crohnoz Labs.
-7. Optionally publish the eventual outcome as a consent-based Forge Story.
+## Privacy model
 
-## Core experiences
+The idea intake is processed locally in the browser. This MVP does not create accounts or automatically persist the idea. Information is only submitted when the visitor separately completes the Forge Review form.
 
-- **Forge an Idea** — conversational idea intake.
-- **Forge Blueprint** — structured concept and product preview.
-- **Forge Intelligence** — assumptions, feasibility, complexity, and data-driven impact indicators.
-- **Forge Review** — technical and commercial evaluation workflow.
-- **Forge Stories** — approved stories showing the original problem, what was built, and the measured or reported outcome.
-- **Forge Dashboard** — internal opportunity pipeline and product-pattern discovery.
+Visitors are warned not to enter passwords, credentials, personal sensitive data or confidential material they are not authorized to share. A generated blueprint is exploratory and does not guarantee feasibility, price, delivery time, confidentiality or intellectual-property terms.
 
-## Visual direction
+## Technology
 
-The identity combines a geometric hammer striking an anvil with controlled sparks, blueprint grids, circuit paths, and a modern digital-laboratory aesthetic. It should feel industrial, precise, and innovative—not medieval.
+The public MVP intentionally uses a small static architecture:
 
-## Delivery principles
+- semantic HTML;
+- responsive CSS;
+- dependency-free JavaScript;
+- Netlify Forms;
+- Netlify redirects and security headers;
+- Node validation and reproducible static build;
+- GitHub Actions quality gate and preview artifact.
 
-- Safe Practices from the first commit.
-- Privacy and explicit publication consent by default.
-- Clear separation between supplied data, calculated indicators, and assumptions.
-- No automatic promises regarding feasibility, delivery dates, confidentiality, or ownership.
-- Accessible, mobile-first, minimal-text interfaces.
-- Demo-ready fictional data until production integrations are approved.
+No external JavaScript, tracking SDK or production database is included.
+
+## Local development
+
+```bash
+npm ci
+npm run check
+python -m http.server 8000 -d dist
+```
+
+Open `http://localhost:8000`.
+
+## Quality gates
+
+```bash
+npm audit --audit-level=high
+npm run validate
+npm run build
+```
+
+The validator checks the privacy and publication contracts, security headers, SPA fallback, local rendering approach and common secret patterns.
 
 ## Branch strategy
 
 - `main` — stable production branch.
-- `develop` — integrated development branch.
-- `feature/*` — isolated product work.
-- `deploy/*` — deployment-specific preparation when required.
+- `develop` — integrated development branch when required.
+- `feat/*` — isolated product work.
+- `fix/*` — corrective work.
 
-## Initial milestone
+All production changes should use a pull request and a Netlify Deploy Preview.
 
-Build a public Netlify-ready experience containing:
+## Production
 
-- Interactive idea intake.
-- Hammer-and-anvil Forge transition.
-- Generated demo blueprint.
-- Editable concept controls.
-- Data simulator and transparent assumptions.
-- Forge Stories gallery with fictional, clearly labeled examples.
-- Human review call to action.
+- Public URL: `https://crohnoz-forge.netlify.app`
+- Privacy: `https://crohnoz-forge.netlify.app/privacy`
 
 ---
 
