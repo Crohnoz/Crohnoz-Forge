@@ -233,25 +233,33 @@ refineButtons.forEach((button) => {
 document.querySelector('#year').textContent = new Date().getFullYear();
 updateSimulator();
 
-const enhancementStylesheet = document.createElement('link');
-enhancementStylesheet.rel = 'stylesheet';
-enhancementStylesheet.href = './enhancements.css';
-enhancementStylesheet.dataset.forgeEnhancements = 'true';
-document.head.appendChild(enhancementStylesheet);
+const stylesheetAssets = [
+  ['./enhancements.css', 'forgeEnhancements'],
+  ['./strategy.css', 'forgeStrategy'],
+  ['./stories.css', 'forgeStories'],
+  ['./dashboard.css', 'forgeDashboard'],
+];
 
-const strategyStylesheet = document.createElement('link');
-strategyStylesheet.rel = 'stylesheet';
-strategyStylesheet.href = './strategy.css';
-strategyStylesheet.dataset.forgeStrategy = 'true';
-document.head.appendChild(strategyStylesheet);
-
-const enhancementScript = document.createElement('script');
-enhancementScript.src = './forge-v2.js';
-enhancementScript.defer = true;
-enhancementScript.addEventListener('load', () => {
-  const strategyScript = document.createElement('script');
-  strategyScript.src = './forge-strategy.js';
-  strategyScript.defer = true;
-  document.body.appendChild(strategyScript);
+stylesheetAssets.forEach(([href, dataKey]) => {
+  const stylesheet = document.createElement('link');
+  stylesheet.rel = 'stylesheet';
+  stylesheet.href = href;
+  stylesheet.dataset[dataKey] = 'true';
+  document.head.appendChild(stylesheet);
 });
-document.body.appendChild(enhancementScript);
+
+function loadScript(src, dataKey) {
+  const script = document.createElement('script');
+  script.src = src;
+  script.defer = true;
+  script.dataset[dataKey] = 'true';
+  document.body.appendChild(script);
+  return script;
+}
+
+const enhancementScript = loadScript('./forge-v2.js', 'forgeEnhancements');
+enhancementScript.addEventListener('load', () => {
+  loadScript('./forge-strategy.js', 'forgeStrategy');
+  loadScript('./forge-stories.js', 'forgeStories');
+  loadScript('./forge-dashboard.js', 'forgeDashboard');
+});
