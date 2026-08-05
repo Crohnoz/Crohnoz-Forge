@@ -139,7 +139,7 @@
       generatedAt: new Date().toISOString(),
       mode: options.mode,
       audience: options.audience,
-      confidentiality: publicSafe ? 'Public-safe draft; still requires publication approval' : options.mode === 'client' ? 'Client review draft' : 'Internal review draft',
+      confidentiality: publicSafe ? 'Public-safe draft; publication approval still required' : options.mode === 'client' ? 'Client review draft' : 'Internal review draft',
       sourceBoundary: 'Generated from the current browser blueprint. No analytics dataset is included.',
       product: {
         name: cleanText(blueprint.name, 120) || 'Crohnoz Forge concept',
