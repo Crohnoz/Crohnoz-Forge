@@ -5,7 +5,7 @@
   "description": "Interactive public innovation experience for Crohnoz Labs.",
   "scripts": {
     "check:syntax": "node --check app.js && node --check forge-v2.js && node --check forge-strategy.js && node --check forge-stories.js && node --check forge-dashboard.js && node --check forge-intelligence-core.js && node --check forge-intelligence.js && node --check forge-refinements.js && node --check forge-workspace-core.js && node --check forge-workspace.js",
-    "test": "node tests/quality.test.mjs",
+    "test": "node tests/quality.test.mjs && node tests/headers.test.mjs",
     "check": "npm run check:syntax && npm test"
   },
   "engines": {
