@@ -1,0 +1,11 @@
+[build]
+  publish = "."
+  command = "npm run check"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[dev]
+  publish = "."
+  command = "python3 -m http.server 8888"
+  port = 8888

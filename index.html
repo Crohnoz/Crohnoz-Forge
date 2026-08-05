@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Bring a raw idea to Crohnoz Forge and shape it into an interactive product blueprint." />
+  <title>Crohnoz Forge — Turn ideas into products</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Crohnoz Forge home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" role="img">
+            <path d="M13 39h38v8H13zM19 47h26l6 9H13zM17 32h28l7 7H12z" />
+            <path d="M28 7h9v18h-9zM21 10h23v8H21z" class="hammer-head" />
+          </svg>
+        </span>
+        <span>
+          <strong>Crohnoz Forge</strong>
+          <small>A Crohnoz Labs initiative</small>
+        </span>
+      </a>
+      <nav>
+        <a href="#forge">Forge an idea</a>
+        <a href="#intelligence">Intelligence</a>
+        <a href="#stories">Stories</a>
+      </nav>
+      <a class="button button-ghost header-cta" href="#forge">Try the Forge</a>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">PUBLIC INNOVATION INTERFACE</p>
+          <h1 id="hero-title">Bring the raw idea.<br /><span>We’ll shape what it could become.</span></h1>
+          <p class="hero-lead">Describe a problem, a strange app, or a product you wish existed. Crohnoz Forge turns it into a structured, interactive product blueprint you can explore and refine.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#forge">Forge my idea</a>
+            <a class="button button-secondary" href="#stories">Explore forged outcomes</a>
+          </div>
+          <div class="trust-row" aria-label="Core principles">
+            <span>Human review</span>
+            <span>Transparent assumptions</span>
+            <span>Privacy by design</span>
+          </div>
+        </div>
+
+        <div class="forge-visual" aria-label="Animated hammer and anvil illustration">
+          <div class="blueprint-grid"></div>
+          <div class="spark-field" id="hero-sparks" aria-hidden="true"></div>
+          <svg class="forge-machine" viewBox="0 0 520 430" role="img" aria-labelledby="forge-visual-title">
+            <title id="forge-visual-title">A digital hammer above a geometric anvil</title>
+            <defs>
+              <linearGradient id="metal" x1="0" x2="1">
+                <stop offset="0" stop-color="#111827" />
+                <stop offset="0.5" stop-color="#4b5563" />
+                <stop offset="1" stop-color="#111827" />
+              </linearGradient>
+              <linearGradient id="heat" x1="0" x2="1">
+                <stop offset="0" stop-color="#ff8b2c" />
+                <stop offset="1" stop-color="#ffd166" />
+              </linearGradient>
+              <filter id="soft-glow">
+                <feGaussianBlur stdDeviation="7" result="blur" />
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <g class="hammer-assembly" id="hero-hammer">
+              <rect x="238" y="38" width="38" height="170" rx="16" fill="url(#metal)" />
+              <rect x="166" y="54" width="184" height="72" rx="18" fill="url(#metal)" />
+              <rect x="183" y="69" width="150" height="14" rx="7" fill="#6b7280" opacity=".55" />
+            </g>
+            <ellipse cx="258" cy="294" rx="88" ry="21" fill="#ff8b2c" opacity=".24" filter="url(#soft-glow)" />
+            <g>
+              <path d="M121 277h281c18 0 32 14 32 32v11H89v-11c0-18 14-32 32-32z" fill="url(#metal)" />
+              <path d="M142 320h239l-26 44H168z" fill="#202938" />
+              <path d="M180 364h163l37 34H143z" fill="#111827" />
+              <rect x="205" y="251" width="105" height="24" rx="7" fill="url(#heat)" class="heated-idea" />
+            </g>
+            <g class="circuit-lines" fill="none" stroke="#ffb15c" stroke-width="3" opacity=".72">
+              <path d="M86 176h82l28 28" />
+              <path d="M432 155h-94l-24 32" />
+              <path d="M62 229h93" />
+              <path d="M463 235h-102" />
+            </g>
+          </svg>
+          <div class="visual-status">
+            <span class="pulse"></span>
+            <div>
+              <small>FORGE STATUS</small>
+              <strong>Ready for raw material</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="forge-section" id="forge" aria-labelledby="forge-title">
+        <div class="section-heading">
+          <p class="eyebrow">START WITH A CONCEPT</p>
+          <h2 id="forge-title">What do you want to build, improve, automate, or make possible?</h2>
+          <p>No technical vocabulary required. An unfinished thought is enough.</p>
+        </div>
+
+        <div class="forge-workspace">
+          <div class="idea-panel">
+            <label for="idea-input">Your raw idea</label>
+            <textarea id="idea-input" rows="7" maxlength="900" placeholder="Example: I need an app that helps small shops detect products that are about to expire and suggests what to discount first."></textarea>
+            <div class="input-meta">
+              <span id="char-count">0 / 900</span>
+              <span>Private by default</span>
+            </div>
+
+            <div class="sample-prompts" aria-label="Example ideas">
+              <button type="button" data-sample="A system that tracks tools borrowed by construction workers using QR codes.">Tool traceability</button>
+              <button type="button" data-sample="An app that helps small food shops detect products close to expiry and plan discounts.">Expiry assistant</button>
+              <button type="button" data-sample="A platform where older adults can request trusted local assistance without complicated menus.">Trusted assistance</button>
+            </div>
+
+            <div class="context-grid">
+              <label>
+                Who is it for?
+                <select id="audience-input">
+                  <option value="small businesses">Small businesses</option>
+                  <option value="operations teams">Operations teams</option>
+                  <option value="consumers">Consumers</option>
+                  <option value="communities">Communities</option>
+                  <option value="undecided users">Not sure yet</option>
+                </select>
+              </label>
+              <label>
+                Preferred format
+                <select id="format-input">
+                  <option value="web application">Web application</option>
+                  <option value="mobile-first application">Mobile-first application</option>
+                  <option value="internal dashboard">Internal dashboard</option>
+                  <option value="hardware-connected product">Hardware-connected product</option>
+                  <option value="format to be validated">Undecided</option>
+                </select>
+              </label>
+            </div>
+
+            <button class="button button-primary forge-button" id="forge-button" type="button">
+              <span>Strike the Forge</span>
+              <span aria-hidden="true">↗</span>
+            </button>
+            <p class="form-note">The preview is exploratory. Final scope, feasibility, ownership, costs, and delivery require human validation.</p>
+          </div>
+
+          <aside class="process-panel" aria-labelledby="process-title">
+            <p class="eyebrow">FORGE SEQUENCE</p>
+            <h3 id="process-title">From raw thought to a reviewable blueprint</h3>
+            <ol class="process-list" id="process-list">
+              <li class="active"><span>01</span><div><strong>Raw material</strong><small>Capture the problem and intent</small></div></li>
+              <li><span>02</span><div><strong>Shaping</strong><small>Identify users, functions, and assumptions</small></div></li>
+              <li><span>03</span><div><strong>Blueprint</strong><small>Produce a structured product concept</small></div></li>
+              <li><span>04</span><div><strong>Human review</strong><small>Validate feasibility and commercial fit</small></div></li>
+            </ol>
+          </aside>
+        </div>
+
+        <div class="forge-progress" id="forge-progress" hidden aria-live="polite">
+          <div class="impact-mark" aria-hidden="true">
+            <span class="mini-hammer"></span>
+            <span class="mini-anvil"></span>
+          </div>
+          <div>
+            <p class="eyebrow">THE FORGE IS WORKING</p>
+            <h3 id="progress-label">Understanding the problem</h3>
+            <div class="progress-track"><span id="progress-bar"></span></div>
+          </div>
+        </div>
+
+        <section class="blueprint" id="blueprint" hidden aria-labelledby="blueprint-title">
+          <div class="blueprint-header">
+            <div>
+              <p class="eyebrow">EXPLORATORY PRODUCT BLUEPRINT</p>
+              <h2 id="blueprint-title">Forge Blueprint</h2>
+              <p id="blueprint-summary"></p>
+            </div>
+            <span class="status-chip">Concept generated</span>
+          </div>
+
+          <div class="blueprint-grid-layout">
+            <article class="blueprint-card primary-card">
+              <span class="card-number">01</span>
+              <p class="eyebrow">PROPOSED PRODUCT</p>
+              <h3 id="product-name">Forge Concept</h3>
+              <p id="product-tagline"></p>
+              <div class="tag-row" id="product-tags"></div>
+            </article>
+
+            <article class="blueprint-card">
+              <span class="card-number">02</span>
+              <p class="eyebrow">CORE USERS</p>
+              <ul id="user-list"></ul>
+            </article>
+
+            <article class="blueprint-card wide-card">
+              <span class="card-number">03</span>
+              <p class="eyebrow">MVP WORKFLOW</p>
+              <div class="workflow" id="workflow-list"></div>
+            </article>
+
+            <article class="blueprint-card">
+              <span class="card-number">04</span>
+              <p class="eyebrow">FIRST RELEASE</p>
+              <ul id="feature-list"></ul>
+            </article>
+
+            <article class="blueprint-card">
+              <span class="card-number">05</span>
+              <p class="eyebrow">OPEN ASSUMPTIONS</p>
+              <ul id="assumption-list"></ul>
+            </article>
+          </div>
+
+          <div class="refine-panel">
+            <div>
+              <p class="eyebrow">REFINE THE CONCEPT</p>
+              <h3>Apply another strike</h3>
+            </div>
+            <div class="refine-actions" id="refine-actions">
+              <button type="button" data-refine="simpler">Make it simpler</button>
+              <button type="button" data-refine="mobile">Mobile-first</button>
+              <button type="button" data-refine="qr">Add QR traceability</button>
+              <button type="button" data-refine="ai">Add AI assistance</button>
+              <button type="button" data-refine="saas">Turn it into SaaS</button>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="intelligence-section" id="intelligence" aria-labelledby="intelligence-title">
+        <div class="section-heading split-heading">
+          <div>
+            <p class="eyebrow">FORGE INTELLIGENCE</p>
+            <h2 id="intelligence-title">Add operational data. See the opportunity change.</h2>
+          </div>
+          <p>These indicators are transparent simulations—not promises. They show how assumptions shape potential value.</p>
+        </div>
+
+        <div class="simulator">
+          <div class="slider-panel">
+            <label>
+              <span>Monthly operations <strong id="operations-value">1,200</strong></span>
+              <input id="operations-slider" type="range" min="100" max="20000" step="100" value="1200" />
+            </label>
+            <label>
+              <span>Manual minutes per operation <strong id="minutes-value">8 min</strong></span>
+              <input id="minutes-slider" type="range" min="1" max="30" step="1" value="8" />
+            </label>
+            <label>
+              <span>Potential process reduction <strong id="reduction-value">35%</strong></span>
+              <input id="reduction-slider" type="range" min="5" max="80" step="5" value="35" />
+            </label>
+            <p class="form-note">Adjust the inputs to explore a scenario. Real projections require validated process data.</p>
+          </div>
+
+          <div class="metrics-panel" aria-live="polite">
+            <article><small>Current manual effort</small><strong id="manual-hours">160 h</strong><span>per month</span></article>
+            <article><small>Potential time released</small><strong id="saved-hours">56 h</strong><span>per month</span></article>
+            <article><small>Annual capacity returned</small><strong id="annual-hours">672 h</strong><span>exploratory estimate</span></article>
+            <article><small>MVP readiness</small><strong id="readiness-value">High</strong><span>based on supplied clarity</span></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="stories-section" id="stories" aria-labelledby="stories-title">
+        <div class="section-heading split-heading">
+          <div>
+            <p class="eyebrow">FORGE STORIES</p>
+            <h2 id="stories-title">Every finished product began as an unfinished thought.</h2>
+          </div>
+          <p>Consent-based stories connect the original problem with what was built and what changed.</p>
+        </div>
+
+        <div class="story-grid">
+          <article class="story-card featured-story">
+            <div class="story-topline"><span>DEMO STORY</span><span>Operations</span></div>
+            <h3>From scattered delivery evidence to one traceable workflow</h3>
+            <p>A logistics team arrived with photos, spreadsheets, and status messages distributed across different channels.</p>
+            <div class="story-outcomes">
+              <span><strong>4</strong> roles connected</span>
+              <span><strong>1</strong> shared workflow</span>
+              <span><strong>100%</strong> fictional demo data</span>
+            </div>
+            <a href="#forge">Forge a related idea <span aria-hidden="true">↗</span></a>
+          </article>
+
+          <article class="story-card">
+            <div class="story-topline"><span>DEMO STORY</span><span>Retail</span></div>
+            <h3>A simple expiry warning became a reusable inventory concept</h3>
+            <p>The initial request was one alert. Discovery revealed opportunities in discounts, waste reporting, and purchasing.</p>
+            <div class="story-stage"><span>Concept clarified</span><strong>Prototype-ready</strong></div>
+          </article>
+
+          <article class="story-card">
+            <div class="story-topline"><span>DEMO STORY</span><span>Accessibility</span></div>
+            <h3>The product became simpler after speaking with real users</h3>
+            <p>The Forge removed unnecessary registration steps and prioritized trusted contacts, large actions, and guided flows.</p>
+            <div class="story-stage"><span>Human-centered revision</span><strong>Still being forged</strong></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="review-section" aria-labelledby="review-title">
+        <div class="review-copy">
+          <p class="eyebrow">MAKE IT REAL</p>
+          <h2 id="review-title">A preview creates clarity. A Forge Review creates a plan.</h2>
+          <p>Send the concept to Crohnoz Labs for a human technical and commercial review. Nothing is published without explicit permission.</p>
+        </div>
+
+        <form class="review-form" name="forge-review" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="forge-review" />
+          <p class="hidden-field">
+            <label>Do not fill this out: <input name="bot-field" /></label>
+          </p>
+          <label>
+            Name
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="full-field">
+            What should we review?
+            <textarea name="review-request" rows="4" placeholder="Paste your idea, describe the blueprint, or tell us what you want to validate." required></textarea>
+          </label>
+          <label class="consent-field full-field">
+            <input type="checkbox" name="contact-consent" required />
+            <span>I agree to be contacted about this request. My idea will remain private unless I later approve publication.</span>
+          </label>
+          <button class="button button-primary full-field" type="submit">Request a Forge Review</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <div class="brand footer-brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><path d="M13 39h38v8H13zM19 47h26l6 9H13zM17 32h28l7 7H12z"/><path d="M28 7h9v18h-9zM21 10h23v8H21z" class="hammer-head"/></svg>
+        </span>
+        <span><strong>Crohnoz Forge</strong><small>Ideas are raw material.</small></span>
+      </div>
+      <p>Exploratory public demo. Fictional examples are clearly labeled.</p>
+      <p>© <span id="year"></span> Crohnoz Labs</p>
+    </footer>
+  </div>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
