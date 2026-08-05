@@ -1,0 +1,13 @@
+{
+  "name": "crohnoz-forge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Public MVP for Crohnoz Forge.",
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "build": "node scripts/build.mjs",
+    "check": "npm run validate && npm run build"
+  },
+  "engines": { "node": ">=24" }
+}
