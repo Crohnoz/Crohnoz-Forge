@@ -14,12 +14,14 @@ const [
   dashboardApp,
   intelligenceCore,
   intelligenceApp,
+  refinementsApp,
   baseCss,
   enhancementCss,
   strategyCss,
   storiesCss,
   dashboardCss,
   intelligenceCss,
+  refinementsCss,
 ] = await Promise.all([
   readFile(new URL('index.html', root), 'utf8'),
   readFile(new URL('app.js', root), 'utf8'),
@@ -29,12 +31,14 @@ const [
   readFile(new URL('forge-dashboard.js', root), 'utf8'),
   readFile(new URL('forge-intelligence-core.js', root), 'utf8'),
   readFile(new URL('forge-intelligence.js', root), 'utf8'),
+  readFile(new URL('forge-refinements.js', root), 'utf8'),
   readFile(new URL('styles.css', root), 'utf8'),
   readFile(new URL('enhancements.css', root), 'utf8'),
   readFile(new URL('strategy.css', root), 'utf8'),
   readFile(new URL('stories.css', root), 'utf8'),
   readFile(new URL('dashboard.css', root), 'utf8'),
   readFile(new URL('intelligence.css', root), 'utf8'),
+  readFile(new URL('refinements.css', root), 'utf8'),
 ]);
 
 for (const id of ['idea-input', 'forge-button', 'blueprint', 'operations-slider', 'review-title']) {
@@ -53,6 +57,8 @@ for (const asset of [
   './intelligence.css',
   './forge-intelligence-core.js',
   './forge-intelligence.js',
+  './refinements.css',
+  './forge-refinements.js',
 ]) {
   assert.ok(app.includes(asset), `The enhancement loader must reference ${asset}`);
 }
@@ -83,6 +89,20 @@ for (const feature of ['calculateScenario', 'frictionMultiplier', 'infrastructur
   assert.ok(intelligenceCore.includes(feature), `Missing Forge Intelligence calculation safeguard: ${feature}`);
 }
 
+for (const feature of [
+  'Include payments',
+  'Remove mandatory registration',
+  'Add inventory',
+  'Add dashboards',
+  'Multi-organization',
+  'Accessibility-first',
+  'Change visual direction',
+  'VISIBLE REFINEMENT IMPACT',
+  'forge:refinement-change',
+]) {
+  assert.ok(refinementsApp.includes(feature), `Missing extended refinement feature: ${feature}`);
+}
+
 assert.ok(storiesApp.includes('showModal'), 'Story detail must use an accessible dialog when supported');
 assert.ok(storiesApp.includes('Anonymous public version'), 'Forge Stories must represent anonymous publication');
 assert.ok(storiesApp.includes('Client-reported and system-measured evidence stay distinct'), 'Evidence-source distinction must remain explicit');
@@ -91,13 +111,22 @@ assert.ok(dashboardApp.includes('Role-based access planned'), 'Dashboard must co
 assert.ok(dashboardApp.includes('Experiment discontinued'), 'Dashboard must represent honest non-success outcomes');
 assert.ok(intelligenceApp.includes('aria-live="polite"'), 'Calculated intelligence outputs must be announced accessibly');
 assert.ok(intelligenceApp.includes('Review calculation assumptions and limitations'), 'Simulator assumptions must be visible on demand');
+assert.ok(refinementsApp.includes('data-extended-refinement="true"'), 'New refinement controls must be distinguishable from base controls');
+assert.ok(refinementsApp.includes('aria-pressed="false"'), 'New refinement buttons must expose pressed state');
+assert.ok(refinementsApp.includes('data-refinement-generated'), 'Refinements must visibly modify blueprint lists');
+assert.ok(refinementsApp.includes('refinement-preview-strip'), 'Refinements must visibly modify the product preview');
+assert.ok(refinementsApp.includes('data-refinement-validation'), 'Refinements must modify validation questions');
 
-for (const source of [enhancementCss, strategyCss, storiesCss, dashboardCss, intelligenceCss]) {
+for (const source of [enhancementCss, strategyCss, storiesCss, dashboardCss, intelligenceCss, refinementsCss]) {
   assert.ok(source.includes('@media (max-width: 760px)'), 'Mobile adaptation rules are required for enhancement styles');
 }
 
-for (const source of [strategyCss, storiesCss, dashboardCss, intelligenceCss]) {
+for (const source of [strategyCss, storiesCss, dashboardCss, intelligenceCss, refinementsCss]) {
   assert.match(source, /prefers-reduced-motion/, 'Reduced-motion support is required for each advanced module');
+}
+
+for (const direction of ['precision-grid', 'warm-service', 'field-utility']) {
+  assert.ok(refinementsCss.includes(`preview-direction-${direction}`), `Missing visual preview direction: ${direction}`);
 }
 
 assert.match(baseCss, /prefers-reduced-motion/, 'Reduced-motion support must remain present');
@@ -154,8 +183,8 @@ assert.equal(clampedScenario.input.branches, 1, 'A scenario must preserve at lea
 assert.equal(clampedScenario.input.errorRate, 100, 'Rates must not exceed 100 percent');
 assert.equal(clampedScenario.metrics.annualCapacityValue, 0, 'Zero-volume scenario must not create artificial value');
 
-for (const source of [app, enhancementApp, strategyApp, storiesApp, dashboardApp, intelligenceCore, intelligenceApp]) {
+for (const source of [app, enhancementApp, strategyApp, storiesApp, dashboardApp, intelligenceCore, intelligenceApp, refinementsApp]) {
   assert.doesNotMatch(source, /(sk-[A-Za-z0-9_-]{20,}|password\s*=\s*["'][^"']+["'])/i, 'Potential secret found in browser code');
 }
 
-console.log('Crohnoz Forge static and calculation quality checks passed.');
+console.log('Crohnoz Forge static, calculation, and refinement quality checks passed.');
