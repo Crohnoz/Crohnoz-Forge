@@ -239,7 +239,19 @@ enhancementStylesheet.href = './enhancements.css';
 enhancementStylesheet.dataset.forgeEnhancements = 'true';
 document.head.appendChild(enhancementStylesheet);
 
+const strategyStylesheet = document.createElement('link');
+strategyStylesheet.rel = 'stylesheet';
+strategyStylesheet.href = './strategy.css';
+strategyStylesheet.dataset.forgeStrategy = 'true';
+document.head.appendChild(strategyStylesheet);
+
 const enhancementScript = document.createElement('script');
 enhancementScript.src = './forge-v2.js';
 enhancementScript.defer = true;
+enhancementScript.addEventListener('load', () => {
+  const strategyScript = document.createElement('script');
+  strategyScript.src = './forge-strategy.js';
+  strategyScript.defer = true;
+  document.body.appendChild(strategyScript);
+});
 document.body.appendChild(enhancementScript);
