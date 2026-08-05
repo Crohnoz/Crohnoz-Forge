@@ -241,6 +241,7 @@ const stylesheetAssets = [
   ['./intelligence.css', 'forgeIntelligence'],
   ['./refinements.css', 'forgeRefinements'],
   ['./workspace-privacy.css', 'forgeWorkspacePrivacy'],
+  ['./review-packet.css', 'forgeReviewPacket'],
 ];
 
 stylesheetAssets.forEach(([href, dataKey]) => {
@@ -276,7 +277,13 @@ enhancementScript.addEventListener('load', () => {
         workspaceScript.addEventListener('load', () => {
           const analyticsCoreScript = loadScript('./forge-analytics-core.js', 'forgeAnalyticsCore');
           analyticsCoreScript.addEventListener('load', () => {
-            loadScript('./forge-analytics.js', 'forgeAnalytics');
+            const analyticsScript = loadScript('./forge-analytics.js', 'forgeAnalytics');
+            analyticsScript.addEventListener('load', () => {
+              const reviewPacketCoreScript = loadScript('./forge-review-packet-core.js', 'forgeReviewPacketCore');
+              reviewPacketCoreScript.addEventListener('load', () => {
+                loadScript('./forge-review-packet.js', 'forgeReviewPacket');
+              });
+            });
           });
         });
       });
