@@ -22,6 +22,9 @@ assert.match(journey, /event\.ctrlKey \|\| event\.metaKey/);
 assert.match(journey, /MutationObserver/);
 assert.match(journey, /IntersectionObserver/);
 assert.match(journey, /aria-live/);
+assert.match(journey, /let forging = false/);
+assert.match(journey, /naturallyFocusable/);
+assert.match(journey, /setCustomValidity/);
 assert.doesNotMatch(journey, /\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket/);
 
 assert.match(css, /:focus-visible/);
