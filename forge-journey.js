@@ -17,6 +17,7 @@
   let activeStage = 'describe';
   let blueprintReady = !blueprint.hidden;
   let blueprintFocusHandled = blueprintReady;
+  let forging = false;
 
   function escapeHtml(value) {
     return String(value).replace(/[&<>'"]/g, (character) => ({
@@ -131,8 +132,9 @@
   function renderInputReadiness() {
     const ready = ideaReady();
     const remaining = Math.max(0, MIN_IDEA_LENGTH - ideaLength());
-    forgeButton.disabled = !ready;
+    forgeButton.disabled = forging || !ready;
     forgeButton.dataset.ready = String(ready);
+    ideaInput.setCustomValidity(ready ? '' : `Please add ${remaining} more character${remaining === 1 ? '' : 's'} so the Forge has enough context.`);
 
     if (forgeButtonLabel) {
       forgeButtonLabel.textContent = ready
@@ -155,7 +157,8 @@
     if (!target) return;
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     if (focus) {
-      target.setAttribute('tabindex', '-1');
+      const naturallyFocusable = target.matches('a[href], button, input, select, textarea, [tabindex]');
+      if (!naturallyFocusable) target.setAttribute('tabindex', '-1');
       window.setTimeout(() => target.focus({ preventScroll: true }), 420);
     }
   }
@@ -212,8 +215,10 @@
 
   forgeButton.addEventListener('click', () => {
     if (ideaReady()) {
+      forging = true;
       status.textContent = 'Shaping your blueprint…';
       forgeButton.setAttribute('aria-busy', 'true');
+      forgeButton.disabled = true;
     }
   });
 
@@ -221,7 +226,9 @@
     const wasReady = blueprintReady;
     blueprintReady = !blueprint.hidden;
     if (blueprintReady) {
+      forging = false;
       forgeButton.removeAttribute('aria-busy');
+      renderInputReadiness();
       if (!wasReady) activeStage = 'shape';
       if (!blueprintFocusHandled) {
         blueprintFocusHandled = true;
