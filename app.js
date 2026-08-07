@@ -59,7 +59,7 @@ document.querySelector('#year').textContent=new Date().getFullYear();updateSimul
 const stylesheetAssets=[
   ['./enhancements.css','forgeEnhancements'],['./strategy.css','forgeStrategy'],['./stories.css','forgeStories'],
   ['./dashboard.css','forgeDashboard'],['./intelligence.css','forgeIntelligence'],['./refinements.css','forgeRefinements'],
-  ['./workspace.css','forgeWorkspace'],
+  ['./workspace.css','forgeWorkspace'],['./journey.css','forgeJourney'],
 ];
 stylesheetAssets.forEach(([href,dataKey])=>{const stylesheet=document.createElement('link');stylesheet.rel='stylesheet';stylesheet.href=href;stylesheet.dataset[dataKey]='true';document.head.appendChild(stylesheet);});
 function loadScript(src,dataKey){const script=document.createElement('script');script.src=src;script.defer=true;script.dataset[dataKey]='true';document.body.appendChild(script);return script;}
@@ -70,4 +70,5 @@ enhancementScript.addEventListener('load',()=>{
   intelligenceCoreScript.addEventListener('load',()=>loadScript('./forge-intelligence.js','forgeIntelligence'));
   const workspaceCoreScript=loadScript('./forge-workspace-core.js','forgeWorkspaceCore');
   workspaceCoreScript.addEventListener('load',()=>loadScript('./forge-workspace.js','forgeWorkspace'));
+  loadScript('./forge-journey.js','forgeJourney');
 });
