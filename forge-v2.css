@@ -1,0 +1,166 @@
+/* Crohnoz Forge v2 — product UX layer */
+
+:root{
+  --forge-hit:3.4s;
+}
+
+/* Make the page feel like a tool before a brochure. */
+.hero{min-height:680px;padding-top:5.25rem;padding-bottom:4rem}
+.hero h1{max-width:760px;font-size:clamp(3.1rem,6.4vw,6.25rem)}
+.hero-lead{max-width:620px;margin-top:1.45rem;line-height:1.62}
+.hero-actions{margin-top:1.55rem}
+.hero-trust{margin-top:2rem}
+.process-strip{grid-template-columns:repeat(3,1fr);margin-bottom:5.5rem}
+.process-strip article{min-height:96px}
+.section-heading{margin-bottom:1.7rem}
+.forge-section,.blueprint-section,.stories-section,.review-section{padding-top:2.25rem;padding-bottom:6rem}
+
+/* Hero forge: the hammer now makes visible contact with the anvil. */
+.forge-visual{min-height:510px}
+.hammer{
+  left:13%;
+  top:7%;
+  transform-origin:66% 78%;
+  animation:hammerStrikeV2 var(--forge-hit) cubic-bezier(.65,.02,.25,1) infinite;
+  will-change:transform;
+}
+.anvil{bottom:58px;animation:anvilImpactV2 var(--forge-hit) ease-in-out infinite}
+.spark{opacity:0;animation-duration:var(--forge-hit)!important;animation-timing-function:ease-out!important;animation-iteration-count:infinite!important}
+.spark--1{left:49%;top:48%;animation-name:sparkHitOne!important;animation-delay:0s!important}
+.spark--2{left:53%;top:47%;animation-name:sparkHitTwo!important;animation-delay:0s!important}
+.spark--3{left:46%;top:46%;animation-name:sparkHitThree!important;animation-delay:0s!important}
+.impact-glow{position:absolute;left:49%;top:51%;width:24px;height:10px;border-radius:50%;background:var(--gold);filter:blur(8px);opacity:0;animation:impactGlowV2 var(--forge-hit) ease-out infinite;pointer-events:none}
+.visual-readout strong{font-size:1rem}
+.visual-readout [data-forge-status]{transition:color .2s ease}
+
+@keyframes hammerStrikeV2{
+  0%,48%,100%{transform:translate(-8px,-18px) rotate(-31deg)}
+  56%{transform:translate(-18px,-32px) rotate(-37deg)}
+  68%{transform:translate(78px,112px) rotate(12deg)}
+  70%{transform:translate(82px,118px) rotate(15deg)}
+  75%{transform:translate(62px,82px) rotate(-1deg)}
+  86%{transform:translate(8px,8px) rotate(-22deg)}
+}
+@keyframes anvilImpactV2{
+  0%,66%,100%{transform:translateX(-50%) translateY(0)}
+  70%{transform:translateX(-50%) translateY(4px)}
+  74%{transform:translateX(-50%) translateY(0)}
+}
+@keyframes impactGlowV2{0%,66%,100%{opacity:0;transform:scale(.25)}69%{opacity:1;transform:scale(2.5)}75%{opacity:0;transform:scale(4)}}
+@keyframes sparkHitOne{0%,67%,100%{opacity:0;transform:rotate(36deg) translateY(0) scale(.4)}70%{opacity:1;transform:rotate(36deg) translateY(-18px) scale(1.2)}78%{opacity:0;transform:rotate(36deg) translateY(-68px) scale(.6)}}
+@keyframes sparkHitTwo{0%,68%,100%{opacity:0;transform:rotate(78deg) translateY(0) scale(.4)}71%{opacity:1;transform:rotate(78deg) translateY(-22px) scale(1.1)}79%{opacity:0;transform:rotate(78deg) translateY(-74px) scale(.5)}}
+@keyframes sparkHitThree{0%,67%,100%{opacity:0;transform:rotate(-24deg) translateY(0) scale(.4)}70%{opacity:1;transform:rotate(-24deg) translateY(-16px) scale(1.15)}78%{opacity:0;transform:rotate(-24deg) translateY(-62px) scale(.55)}}
+
+/* Quick-start prompts */
+.quick-start{margin-top:1.5rem;display:grid;gap:.65rem}
+.quick-start>span{color:var(--dim);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+.quick-start__actions{display:flex;gap:.55rem;flex-wrap:wrap}
+.quick-prompt{border:1px solid var(--line);background:rgba(255,255,255,.025);color:var(--muted);border-radius:999px;padding:.6rem .8rem;font-size:.74rem;cursor:pointer;transition:.18s ease}
+.quick-prompt:hover,.quick-prompt:focus-visible{color:var(--text);border-color:rgba(255,140,66,.55);background:rgba(255,107,53,.07);transform:translateY(-1px)}
+
+/* Forge input becomes a single, scannable workspace. */
+.forge-shell{grid-template-columns:minmax(0,1fr) 310px}
+.idea-form{min-height:0}
+.forge-form-intro{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;padding-bottom:1.3rem;margin-bottom:1.3rem;border-bottom:1px solid var(--line)}
+.forge-form-intro strong{display:block;font-size:1.2rem}
+.forge-form-intro span{display:block;margin-top:.35rem;color:var(--muted);font-size:.78rem;line-height:1.5}
+.forge-form-intro b{flex:0 0 auto;padding:.45rem .65rem;border:1px solid rgba(127,227,161,.22);border-radius:999px;color:var(--green);font-size:.62rem;letter-spacing:.08em}
+.form-layout{display:grid;gap:1.15rem}
+.form-divider{height:1px;background:var(--line);margin:.2rem 0}
+.form-advanced{border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.018)}
+.form-advanced summary{cursor:pointer;list-style:none;padding:1rem 1.05rem;color:var(--muted);font-size:.78rem;font-weight:700;display:flex;justify-content:space-between;gap:1rem}
+.form-advanced summary::-webkit-details-marker{display:none}
+.form-advanced summary:after{content:'+';color:var(--orange);font-size:1rem}
+.form-advanced[open] summary:after{content:'−'}
+.form-advanced__body{padding:0 1rem 1rem;display:grid;gap:1rem}
+.priority-grid span{min-height:76px;padding:.85rem}
+.priority-grid small{font-size:.7rem}
+.consent-stack{display:grid;gap:.7rem}
+.consent-row{padding:.8rem .9rem}
+.safe-inline{margin:0;color:var(--dim);font-size:.72rem;line-height:1.5}
+.safe-inline strong{color:var(--muted)}
+.form-actions{align-items:center;justify-content:space-between;margin-top:.5rem}
+.form-actions__note{max-width:420px;color:var(--dim);font-size:.7rem;line-height:1.5}
+.form-error{text-align:left;margin:.3rem 0 0}
+
+/* Side card is now outcome-oriented. */
+.forge-sidecard h3{margin-bottom:.7rem}
+.forge-sidecard>p{color:var(--muted);font-size:.78rem;line-height:1.55}
+.sidecard-steps{list-style:none!important;padding:0!important;margin:1.25rem 0!important;counter-reset:forge-step}
+.sidecard-steps li{counter-increment:forge-step;grid-template-columns:28px 1fr!important}
+.sidecard-steps li:before{content:counter(forge-step);width:24px;height:24px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line2);color:var(--orange);font:700 .66rem ui-monospace,monospace}
+
+/* Result toolbar */
+.blueprint-section[data-state='generated'] .blueprint-shell{border-color:rgba(255,140,66,.28)}
+.blueprint-toolbar{display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid var(--line);background:rgba(255,255,255,.018)}
+.blueprint-toolbar__state{display:flex;align-items:center;gap:.55rem;color:var(--muted);font-size:.72rem}
+.blueprint-toolbar__state i{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(255,209,102,.5)}
+.blueprint-toolbar__actions{display:flex;gap:.5rem;flex-wrap:wrap}
+.tool-button{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:10px;padding:.62rem .78rem;font-size:.72rem;font-weight:750;cursor:pointer}
+.tool-button:hover{color:var(--text);border-color:var(--line2);background:rgba(255,255,255,.035)}
+.blueprint-card{min-height:220px}
+.blueprint-card--recommendation{background:linear-gradient(140deg,rgba(127,227,161,.055),transparent)}
+.blueprint-card--recommendation h3{color:var(--green)}
+.blueprint-card--recommendation strong{font-size:1.05rem;line-height:1.45}
+.blueprint-card--recommendation p{margin-bottom:0}
+
+/* Replace decorative sliders with an explainable snapshot. */
+.readiness-panel{padding:1.6rem 2rem 2rem;background:#131210;border-top:1px solid var(--line)}
+.readiness-heading{display:flex;justify-content:space-between;gap:2rem;align-items:end;margin-bottom:1rem}
+.readiness-heading p{margin:0 0 .4rem;color:var(--orange);letter-spacing:.13em;font-size:.64rem;font-weight:800}
+.readiness-heading h3{margin:0;font-size:clamp(1.45rem,2.8vw,2.2rem)}
+.readiness-heading>span{max-width:390px;color:var(--dim);font-size:.73rem;line-height:1.55}
+.readiness-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+.readiness-grid article{padding:1rem;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.018)}
+.readiness-grid small{display:block;color:var(--dim);font-size:.61rem;letter-spacing:.1em}
+.readiness-grid strong{display:block;margin:.55rem 0 .25rem;font-size:1.35rem}
+.readiness-grid span{color:var(--muted);font-size:.72rem;line-height:1.45}
+.readiness-grid article:last-child strong{color:var(--green)}
+
+/* Compact proof/examples; less brochure copy. */
+.stories-grid article{min-height:300px}
+.stories-grid h3{margin-top:1.35rem;font-size:1.3rem}
+.stories-grid p{font-size:.78rem}
+.stories-grid article>div{margin-top:1.2rem}
+
+/* Review is a deliberate next action, not another wall of content. */
+.review-section{gap:2rem}
+.review-copy{padding-top:1rem}
+.review-copy h2{font-size:clamp(2.2rem,4vw,4rem)}
+.review-copy>span{max-width:520px}
+.review-copy ul{margin-top:1.5rem}
+.review-form{box-shadow:0 18px 50px rgba(0,0,0,.28)}
+
+.toast{position:fixed;right:1rem;bottom:1rem;z-index:100;padding:.85rem 1rem;border:1px solid var(--line2);border-radius:12px;background:rgba(18,17,15,.94);box-shadow:var(--shadow);color:var(--text);font-size:.76rem;max-width:min(360px,calc(100vw - 2rem));transform:translateY(18px);opacity:0;pointer-events:none;transition:.2s ease}
+.toast.is-visible{transform:none;opacity:1}
+
+@media(max-width:980px){
+  .process-strip{grid-template-columns:1fr 1fr}
+  .process-strip article:last-child{grid-column:1/-1}
+  .readiness-grid{grid-template-columns:1fr}
+  .readiness-heading{align-items:flex-start;flex-direction:column;gap:.7rem}
+}
+
+@media(max-width:680px){
+  .hero{padding-top:4rem}
+  .forge-visual{min-height:390px}
+  .hammer{left:1%;top:0}
+  .anvil{bottom:20px}
+  .process-strip{grid-template-columns:1fr}
+  .process-strip article:last-child{grid-column:auto}
+  .quick-start__actions{display:grid}
+  .quick-prompt{text-align:left;border-radius:12px}
+  .idea-form{padding:1rem}
+  .forge-form-intro{display:grid}
+  .form-actions{display:grid;grid-template-columns:1fr}
+  .form-actions .button{width:100%;grid-column:auto!important}
+  .form-actions__note{order:2}
+  .blueprint-toolbar{align-items:flex-start;flex-direction:column}
+  .blueprint-toolbar__actions{width:100%;display:grid;grid-template-columns:1fr 1fr}
+  .tool-button{width:100%}
+  .readiness-panel{padding:1.25rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hammer,.anvil,.spark,.impact-glow{animation:none!important}
+}
