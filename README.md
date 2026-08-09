@@ -1,33 +1,39 @@
 # Crohnoz Forge
 
-**Ideas are raw material. Crohnoz Forge turns them into products.**
+**Ideas are raw material. Crohnoz Forge turns them into decisions before they become software.**
 
-Crohnoz Forge is the public innovation branch of Crohnoz Labs. The MVP transforms a plain-language problem or idea into an editable, exploratory product blueprint without requiring an account or automatically publishing the supplied information.
+Crohnoz Forge is the public innovation workspace of Crohnoz Labs. The current product transforms a plain-language problem or idea into an exploratory blueprint without requiring an account or automatically publishing or persisting the supplied information.
 
 ## Public experience
 
-- Three-step idea intake with sensitive-data warnings.
-- Browser-side blueprint generation.
-- Proposed users, workflow, MVP features, screens, risks and metrics.
-- Transparent labels separating supplied data, assumptions and inferred risks.
-- Scope, automation and integration controls.
-- Efficiency simulator using user-entered assumptions.
-- Fictional Forge Stories clearly marked as demonstrations.
+- Single-workspace idea intake with required sensitive-data warnings.
+- Optional advanced context for volume, data sensitivity and constraints.
+- Quick-start examples that populate the workspace without submitting data.
+- Browser-side deterministic blueprint generation.
+- Proposed users, workflow, MVP features, screens, risks, metrics and recommended next step.
+- Explainable readiness snapshot for potential impact and relative complexity.
+- Copy-to-clipboard and local `.txt` download actions.
+- Ability to return to the original idea and forge another iteration.
+- Fictional examples clearly marked as demonstrations.
 - Human Forge Review request through Netlify Forms.
 - Independent privacy policy and publication consent disabled by default.
 
+## Product integrity
+
+The public version uses a deterministic local exploration engine; it does **not** claim that an external AI model is connected. If an AI-assisted generation layer is introduced later, it must run through a secure server-side boundary with secrets outside the public client and with the privacy contract updated accordingly.
+
 ## Privacy model
 
-The idea intake is processed locally in the browser. This MVP does not create accounts or automatically persist the idea. Information is only submitted when the visitor separately completes the Forge Review form.
+The idea intake is processed locally in the browser. This product does not create accounts or automatically persist the idea. Information is only submitted when the visitor separately completes the Forge Review form.
 
 Visitors are warned not to enter passwords, credentials, personal sensitive data or confidential material they are not authorized to share. A generated blueprint is exploratory and does not guarantee feasibility, price, delivery time, confidentiality or intellectual-property terms.
 
 ## Technology
 
-The public MVP intentionally uses a small static architecture:
+The public product intentionally uses a small static architecture:
 
 - semantic HTML;
-- responsive CSS;
+- responsive CSS with a separate Forge v2 product layer;
 - dependency-free JavaScript;
 - Netlify Forms;
 - Netlify redirects and security headers;
@@ -54,13 +60,13 @@ npm run validate
 npm run build
 ```
 
-The validator checks the privacy and publication contracts, security headers, SPA fallback, local rendering approach and common secret patterns.
+The validator checks privacy and publication contracts, security headers, SPA fallback, local rendering, blueprint export controls, required assets and common secret patterns.
 
 ## Branch strategy
 
 - `main` — stable production branch.
 - `develop` — integrated development branch when required.
-- `feat/*` — isolated product work.
+- `feat/*` / `product/*` — isolated product work.
 - `fix/*` — corrective work.
 
 All production changes should use a pull request and a Netlify Deploy Preview.
