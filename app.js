@@ -407,8 +407,9 @@
     const fallback = document.createElement('textarea');
     fallback.value = value;
     fallback.setAttribute('readonly', '');
-    fallback.style.position = 'fixed';
-    fallback.style.opacity = '0';
+    fallback.className = 'honeypot';
+    fallback.setAttribute('aria-hidden', 'true');
+    fallback.setAttribute('tabindex', '-1');
     document.body.appendChild(fallback);
     fallback.select();
     document.execCommand('copy');
