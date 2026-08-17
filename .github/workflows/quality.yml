@@ -2,7 +2,7 @@ name: Forge Quality
 
 on:
   push:
-    branches: [main, develop, "feat/**", "fix/**", "chore/**"]
+    branches: [main, develop, "feat/**", "feature/**", "product/**", "fix/**", "chore/**"]
   pull_request:
     branches: [main]
 
@@ -31,6 +31,8 @@ jobs:
         run: npm audit --audit-level=high
       - name: Validate privacy and security contracts
         run: npm run validate
+      - name: Test Forge lifecycle
+        run: npm test
       - name: Build public site
         run: npm run build
       - name: Upload preview artifact
