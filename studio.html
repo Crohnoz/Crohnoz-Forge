@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#11100f" />
+  <meta name="description" content="Crohnoz Forge Studio convierte una idea o problema en un proyecto trazable con discovery, blueprint, prototipo, testing y handoff." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://crohnoz-forge.netlify.app/studio" />
+  <link rel="icon" href="/assets/forge-mark.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/forge-v2.css" />
+  <link rel="stylesheet" href="/forge-studio.css" />
+  <title>Crohnoz Forge Studio — Product workspace</title>
+</head>
+<body class="studio-page">
+  <a class="skip-link" href="#studio-main">Saltar al workspace</a>
+  <header class="studio-topbar">
+    <a class="brand" href="/" aria-label="Crohnoz Forge, volver al inicio">
+      <img src="/assets/forge-mark.svg" alt="" width="38" height="38" />
+      <span><strong>CROHNOZ</strong><b>FORGE</b></span>
+    </a>
+    <div class="studio-product-name"><span>STUDIO</span><small>Product workspace</small></div>
+    <nav aria-label="Acciones de Studio">
+      <a href="/">Forjar idea</a>
+      <a href="/privacy.html">Privacidad</a>
+      <a class="studio-topbar__cta" href="https://crohnozlabs.cl">Crohnoz Labs ↗</a>
+    </nav>
+  </header>
+
+  <main class="studio-shell" id="studio-main">
+    <aside class="studio-sidebar" aria-label="Proyectos Forge">
+      <div class="sidebar-heading">
+        <div><small>WORKSPACE</small><strong>Proyectos <span id="project-count">0</span></strong></div>
+        <button type="button" id="new-project" class="icon-button" aria-label="Crear proyecto">+</button>
+      </div>
+
+      <label class="studio-search">
+        <span class="sr-only">Buscar proyectos</span>
+        <input id="project-search" type="search" placeholder="Buscar proyecto…" autocomplete="off" />
+      </label>
+
+      <div id="project-list" class="project-list"></div>
+
+      <div class="sidebar-actions">
+        <button type="button" id="load-demo">Cargar demo ficticia</button>
+        <label class="file-action">Importar .forge.json<input id="import-file" type="file" accept="application/json,.json" /></label>
+      </div>
+
+      <section class="storage-card" aria-labelledby="storage-title">
+        <div class="storage-card__head"><span class="status-dot"></span><div><strong id="storage-title">Privacidad local</strong><small>Controlas qué persiste.</small></div></div>
+        <label class="storage-toggle"><input id="storage-consent" type="checkbox" /><span><b>Guardar en este navegador</b><small>Proyectos y avances quedan solo en este dispositivo.</small></span></label>
+        <p>Desactivado por defecto. Sin guardado, Studio funciona en memoria durante esta sesión.</p>
+        <button type="button" id="clear-local" class="text-action text-action--danger">Limpiar workspace</button>
+      </section>
+    </aside>
+
+    <section class="studio-content">
+      <section class="studio-empty" id="studio-empty">
+        <div class="studio-empty__mark"><img src="/assets/forge-mark.svg" alt="" width="72" height="72" /></div>
+        <p>FORGE STUDIO</p>
+        <h1>Una idea no termina en un blueprint.</h1>
+        <span>Conviértela en un proyecto con decisiones, evidencia y etapas claras hasta llegar a un resultado.</span>
+        <div><button class="button button--forge" type="button" id="empty-new-project">Crear primer proyecto</button><button class="button button--ghost" type="button" onclick="document.getElementById('load-demo').click()">Explorar demo</button></div>
+        <small>No necesitas cuenta. El guardado local es opcional y explícito.</small>
+      </section>
+
+      <section class="project-workspace" id="project-workspace" hidden>
+        <header class="project-header">
+          <div class="project-heading">
+            <div class="project-heading__meta"><span id="project-stage">Raw</span><small id="project-updated">Actualizado —</small><i id="project-mode">Sesión temporal</i></div>
+            <h1 id="project-title">Proyecto</h1>
+          </div>
+          <div class="project-header__actions">
+            <button type="button" id="save-iteration" class="button button--ghost">Guardar hito</button>
+            <button type="button" id="advance-stage" class="button button--forge">Avanzar etapa</button>
+          </div>
+        </header>
+
+        <section class="stage-panel" aria-labelledby="lifecycle-title">
+          <div class="panel-kicker"><span>LIFECYCLE</span><small id="lifecycle-title">De materia prima a resultado.</small></div>
+          <div class="stage-timeline" id="stage-timeline"></div>
+        </section>
+
+        <section class="studio-overview" aria-label="Estado del proyecto">
+          <article class="readiness-card">
+            <div><small>FORGE READINESS</small><strong id="readiness-score">0%</strong></div>
+            <div class="readiness-meter" id="readiness-meter"><span></span></div>
+            <p>Indicador de completitud del trabajo, no promesa de factibilidad.</p>
+          </article>
+          <article class="next-action-card">
+            <small>PRÓXIMA ACCIÓN</small>
+            <strong id="next-action-title">Definir problema</strong>
+            <p id="next-action-detail">Completa el gate actual.</p>
+          </article>
+          <article class="gate-card">
+            <header><div><small>STAGE GATE</small><strong id="gate-label">Gate incompleto</strong></div><b id="gate-progress">0/3</b></header>
+            <ul id="gate-list"></ul>
+          </article>
+        </section>
+
+        <nav class="studio-tabs" role="tablist" aria-label="Áreas del proyecto">
+          <button type="button" role="tab" data-tab="brief" class="is-active" aria-selected="true">Brief</button>
+          <button type="button" role="tab" data-tab="scope" aria-selected="false">Scope & Prototype</button>
+          <button type="button" role="tab" data-tab="evidence" aria-selected="false">Evidence</button>
+          <button type="button" role="tab" data-tab="decisions" aria-selected="false">Decisions</button>
+          <button type="button" role="tab" data-tab="handoff" aria-selected="false">Handoff</button>
+        </nav>
+
+        <section class="studio-panel" data-panel="brief">
+          <div class="panel-heading"><div><p>PROJECT BRIEF</p><h2>Define lo esencial antes de construir.</h2></div><span>Los cambios se mantienen en la sesión; solo persisten entre visitas si activas guardado local.</span></div>
+          <div class="brief-grid">
+            <label class="studio-field"><span>Nombre del proyecto</span><input id="brief-title" maxlength="120" /></label>
+            <label class="studio-field studio-field--wide"><span>Problema</span><textarea id="brief-problem" rows="5" maxlength="1400" placeholder="Qué ocurre hoy, quién se ve afectado y por qué importa."></textarea></label>
+            <label class="studio-field"><span>Personas / roles</span><input id="brief-audience" maxlength="240" placeholder="Usuarios, operadores, responsables…" /></label>
+            <label class="studio-field"><span>Resultado esperado</span><textarea id="brief-outcome" rows="3" maxlength="600" placeholder="Qué debería cambiar si el proyecto funciona."></textarea></label>
+            <label class="studio-field studio-field--wide"><span>Restricciones conocidas</span><textarea id="brief-constraints" rows="3" maxlength="700" placeholder="Plataformas, conectividad, datos, regulación, presupuesto, operación…"></textarea></label>
+          </div>
+
+          <section class="work-card">
+            <div class="work-card__heading"><div><small>ASSUMPTIONS REGISTER</small><h3>Qué estamos suponiendo.</h3></div><span>Hazlo visible para poder validarlo o descartarlo.</span></div>
+            <div class="inline-add"><input id="assumption-input" maxlength="260" placeholder="Ej.: El equipo puede completar el flujo desde un teléfono." /><button type="button" id="add-assumption">Agregar supuesto</button></div>
+            <div id="assumption-list" class="record-list"></div>
+          </section>
+        </section>
+
+        <section class="studio-panel" data-panel="scope" hidden>
+          <div class="panel-heading"><div><p>SCOPE & PROTOTYPE</p><h2>Recorta, representa y prepara una prueba.</h2></div><span>El objetivo es aprender con el menor alcance que conserve valor real.</span></div>
+          <div class="scope-grid">
+            <section class="work-card"><div class="work-card__heading"><div><small>MVP</small><h3>Primera versión</h3></div><span>Capacidades, no pantallas decorativas.</span></div><div class="inline-add"><input id="mvp-input" maxlength="220" placeholder="Ej.: Historial de cambios por caso" /><button id="add-mvp" type="button">Agregar</button></div><div id="mvp-list" class="studio-list"></div></section>
+            <section class="work-card"><div class="work-card__heading"><div><small>SUCCESS SIGNALS</small><h3>Métricas</h3></div><span>Señales que cambian una decisión.</span></div><div class="inline-add"><input id="metric-input" maxlength="220" placeholder="Ej.: Tiempo medio para resolver el caso" /><button id="add-metric" type="button">Agregar</button></div><div id="metric-list" class="studio-list"></div></section>
+          </div>
+          <section class="work-card"><div class="work-card__heading"><div><small>PROTOTYPE NOTES</small><h3>Qué representa el prototipo.</h3></div><span>Describe el recorrido crítico, límites y fidelidad.</span></div><label class="studio-field"><span class="sr-only">Notas del prototipo</span><textarea id="prototype-notes" rows="5" maxlength="1200" placeholder="Ej.: Prototipo navegable del registro → asignación → cierre, sin autenticación real ni integraciones."></textarea></label></section>
+          <section class="work-card"><div class="work-card__heading"><div><small>TEST SCENARIOS</small><h3>Tareas observables</h3></div><span>Qué debería poder lograr una persona sin ayuda.</span></div><div class="inline-add"><input id="scenario-input" maxlength="260" placeholder="Ej.: Registrar una entrega y encontrar su responsable actual." /><button id="add-scenario" type="button">Agregar</button></div><div id="scenario-list" class="studio-list"></div></section>
+          <section class="work-card"><div class="work-card__heading"><div><small>OUTCOME NOTES</small><h3>Resultado y aprendizaje</h3></div><span>Se vuelve obligatorio al cerrar el lifecycle.</span></div><label class="studio-field"><span class="sr-only">Resultado y aprendizaje</span><textarea id="outcome-notes" rows="5" maxlength="1400" placeholder="Qué funcionó, qué no, qué evidencia quedó y cuál es la siguiente apuesta."></textarea></label></section>
+        </section>
+
+        <section class="studio-panel" data-panel="evidence" hidden>
+          <div class="panel-heading"><div><p>EVIDENCE LEDGER</p><h2>Separa evidencia de opinión.</h2></div><span>Registra observaciones, entrevistas, datos y restricciones comprobadas.</span></div>
+          <section class="capture-card">
+            <div class="capture-grid">
+              <label class="studio-field"><span>Tipo</span><select id="evidence-type"><option value="observación">Observación</option><option value="entrevista">Entrevista</option><option value="dato">Dato</option><option value="restricción">Restricción</option><option value="test">Prueba</option></select></label>
+              <label class="studio-field"><span>Evidencia</span><input id="evidence-input" maxlength="320" placeholder="Qué observaste o verificaste." /></label>
+              <label class="studio-field studio-field--wide"><span>Nota / contexto</span><textarea id="evidence-note" rows="3" maxlength="700" placeholder="Fuente, alcance, dudas o limitaciones."></textarea></label>
+            </div>
+            <button type="button" id="add-evidence" class="button button--forge">Registrar evidencia</button>
+          </section>
+          <div id="evidence-list" class="record-list record-list--large"></div>
+        </section>
+
+        <section class="studio-panel" data-panel="decisions" hidden>
+          <div class="panel-heading"><div><p>DECISION LOG</p><h2>Que cada cambio tenga una razón.</h2></div><span>Una decisión trazada vale más que una pantalla nueva sin contexto.</span></div>
+          <section class="capture-card">
+            <div class="capture-grid"><label class="studio-field"><span>Decisión</span><input id="decision-input" maxlength="320" placeholder="Ej.: Postergar integración con ERP para validar el flujo base." /></label><label class="studio-field"><span>Por qué</span><input id="decision-reason" maxlength="420" placeholder="Evidencia, riesgo o aprendizaje que la sustenta." /></label></div>
+            <button type="button" id="add-decision" class="button button--forge">Registrar decisión</button>
+          </section>
+          <div id="decision-list" class="record-list record-list--large"></div>
+          <section class="work-card iteration-card"><div class="work-card__heading"><div><small>ITERATION HISTORY</small><h3>Hitos guardados</h3></div><span>Captura una versión lógica antes de cambiar rumbo.</span></div><div id="iteration-list" class="iteration-list"></div></section>
+        </section>
+
+        <section class="studio-panel" data-panel="handoff" hidden>
+          <div class="panel-heading"><div><p>HANDOFF PACKET</p><h2>Entrega contexto, no solo archivos.</h2></div><span>Exporta un paquete portátil para revisión, discovery técnico o continuidad del proyecto.</span></div>
+          <div class="handoff-metrics"><article><small>ETAPA</small><strong id="handoff-stage">Raw</strong></article><article><small>READINESS</small><strong id="handoff-readiness">0 / 100</strong></article><article><small>EVIDENCIAS</small><strong id="handoff-evidence">0</strong></article><article><small>DECISIONES</small><strong id="handoff-decisions">0</strong></article></div>
+          <div class="handoff-layout">
+            <section class="handoff-copy"><h3>Paquete de revisión</h3><p>Incluye brief, stage actual, MVP, métricas, supuestos, evidencia, decisiones, prototipo, pruebas y outcome.</p><div class="handoff-actions"><button type="button" id="copy-handoff" class="button button--forge">Copiar Markdown</button><button type="button" id="download-md" class="button button--ghost">Descargar .md</button><button type="button" id="download-json" class="button button--ghost">Exportar .forge.json</button></div><p class="handoff-note">El JSON permite mover el proyecto entre navegadores. No contiene claves ni información que Studio no muestre aquí.</p></section>
+            <label class="handoff-preview"><span>Vista previa</span><textarea id="handoff-preview" rows="24" readonly></textarea></label>
+          </div>
+        </section>
+
+        <footer class="project-danger-zone"><div><strong>Control del proyecto</strong><span>Elimina solo este proyecto de la sesión actual.</span></div><button type="button" id="delete-project" class="text-action text-action--danger">Eliminar proyecto</button></footer>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="project-dialog" class="project-dialog">
+    <form method="dialog" id="new-project-form">
+      <header><div><small>NUEVO PROYECTO</small><h2>Trae la materia prima.</h2></div><button type="button" id="dialog-cancel" aria-label="Cerrar">×</button></header>
+      <p>Con tres datos basta para iniciar. El resto se estructura dentro del Studio.</p>
+      <label class="studio-field"><span>Nombre</span><input name="title" maxlength="120" required placeholder="Ej.: Trazabilidad de entregas" /></label>
+      <label class="studio-field"><span>Problema</span><textarea name="problem" rows="4" maxlength="1400" required placeholder="Qué ocurre hoy y por qué duele."></textarea></label>
+      <label class="studio-field"><span>Personas / roles</span><input name="audience" maxlength="240" required placeholder="Quién vive o administra el problema." /></label>
+      <label class="studio-field"><span>Resultado esperado</span><textarea name="outcome" rows="3" maxlength="600" required placeholder="Qué debería cambiar si funciona."></textarea></label>
+      <footer><button type="button" class="button button--ghost" onclick="document.getElementById('project-dialog').close()">Cancelar</button><button class="button button--forge" type="submit">Crear proyecto</button></footer>
+    </form>
+  </dialog>
+
+  <div class="toast studio-toast" id="studio-toast" role="status" aria-live="polite"></div>
+  <script type="module" src="/forge-studio.js"></script>
+</body>
+</html>
