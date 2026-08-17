@@ -61,7 +61,7 @@
         <p>FORGE STUDIO</p>
         <h1>Una idea no termina en un blueprint.</h1>
         <span>Conviértela en un proyecto con decisiones, evidencia y etapas claras hasta llegar a un resultado.</span>
-        <div><button class="button button--forge" type="button" id="empty-new-project">Crear primer proyecto</button><button class="button button--ghost" type="button" onclick="document.getElementById('load-demo').click()">Explorar demo</button></div>
+        <div><button class="button button--forge" type="button" id="empty-new-project">Crear primer proyecto</button><button class="button button--ghost" type="button" id="empty-load-demo">Explorar demo</button></div>
         <small>No necesitas cuenta. El guardado local es opcional y explícito.</small>
       </section>
 
@@ -180,7 +180,7 @@
       <label class="studio-field"><span>Problema</span><textarea name="problem" rows="4" maxlength="1400" required placeholder="Qué ocurre hoy y por qué duele."></textarea></label>
       <label class="studio-field"><span>Personas / roles</span><input name="audience" maxlength="240" required placeholder="Quién vive o administra el problema." /></label>
       <label class="studio-field"><span>Resultado esperado</span><textarea name="outcome" rows="3" maxlength="600" required placeholder="Qué debería cambiar si funciona."></textarea></label>
-      <footer><button type="button" class="button button--ghost" onclick="document.getElementById('project-dialog').close()">Cancelar</button><button class="button button--forge" type="submit">Crear proyecto</button></footer>
+      <footer><button type="button" id="dialog-footer-cancel" class="button button--ghost">Cancelar</button><button class="button button--forge" type="submit">Crear proyecto</button></footer>
     </form>
   </dialog>
 
