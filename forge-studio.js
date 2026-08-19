@@ -18,6 +18,7 @@ const STORAGE = {
   projects: 'crohnoz-forge.studio-projects.v1',
   active: 'crohnoz-forge.studio-active.v1',
 };
+const TRANSFER_KEY = 'crohnoz-forge.transfer.v1';
 
 const state = {
   projects: [],
@@ -54,6 +55,26 @@ function loadState() {
   const stored = safeJson(readStorage(STORAGE.projects, '[]'), []);
   state.projects = Array.isArray(stored) ? stored.map(normalizeProject) : [];
   state.activeId = readStorage(STORAGE.active, '') || state.projects[0]?.id || '';
+}
+
+function loadTemporaryTransfer() {
+  let raw = null;
+  try {
+    raw = sessionStorage.getItem(TRANSFER_KEY);
+    sessionStorage.removeItem(TRANSFER_KEY);
+  } catch {
+    return false;
+  }
+  if (!raw) return false;
+
+  const payload = safeJson(raw, null);
+  if (!payload || payload.schema !== 'crohnoz-forge-transfer/v1' || !payload.project || typeof payload.project !== 'object') return false;
+
+  const project = createProject({ ...payload.project, stageIndex: 0 });
+  state.projects = [project, ...state.projects.filter((item) => item.id !== project.id)];
+  state.activeId = project.id;
+  state.tab = 'brief';
+  return true;
 }
 
 function persistState() {
@@ -486,5 +507,10 @@ function bindEvents() {
 }
 
 loadState();
+const receivedTransfer = loadTemporaryTransfer();
+if (receivedTransfer) persistState();
 bindEvents();
 renderAll();
+if (receivedTransfer) {
+  window.setTimeout(() => toast('Blueprint recibido desde Forge. Sigue en Raw: valida problema, personas y resultado antes de avanzar.', 'success'), 0);
+}
