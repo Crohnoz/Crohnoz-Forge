@@ -10,6 +10,7 @@
   const errorBox = $('#form-error');
   const toast = $('#toast');
   const forgeStatus = $('[data-forge-status]');
+  const STUDIO_TRANSFER_KEY = 'crohnoz-forge.transfer.v1';
   let latestBlueprint = null;
   let toastTimer = null;
 
@@ -176,6 +177,75 @@
     toastTimer = window.setTimeout(() => toast.classList.remove('is-visible'), 2600);
   };
 
+  const injectStudioEntryPoints = () => {
+    const nav = $('.site-header nav');
+    if (nav && !nav.querySelector('[data-forge-studio-link]')) {
+      const link = document.createElement('a');
+      link.href = '/studio';
+      link.textContent = 'Studio';
+      link.dataset.forgeStudioLink = 'nav';
+      nav.append(link);
+    }
+
+    const heroActions = $('.hero-actions');
+    if (heroActions && !heroActions.querySelector('[data-forge-studio-link]')) {
+      const link = document.createElement('a');
+      link.href = '/studio';
+      link.className = 'button button--ghost';
+      link.textContent = 'Abrir Forge Studio';
+      link.dataset.forgeStudioLink = 'hero';
+      heroActions.append(link);
+    }
+
+    const toolbar = $('.blueprint-toolbar__actions');
+    if (toolbar && !$('#continue-studio')) {
+      const button = document.createElement('button');
+      button.id = 'continue-studio';
+      button.className = 'tool-button';
+      button.type = 'button';
+      button.textContent = 'Continuar en Studio';
+      button.disabled = true;
+      button.title = 'Forja un blueprint para abrirlo como proyecto en Forge Studio.';
+      toolbar.append(button);
+    }
+  };
+
+  const continueInStudio = () => {
+    if (!latestBlueprint) {
+      showToast('Forja un blueprint antes de continuar a Studio.');
+      return;
+    }
+
+    const project = {
+      title: latestBlueprint.title,
+      problem: latestBlueprint.source.idea,
+      audience: latestBlueprint.source.audience,
+      outcome: latestBlueprint.source.outcome,
+      constraints: latestBlueprint.source.constraints,
+      stageIndex: 0,
+      mvp: latestBlueprint.features,
+      metrics: latestBlueprint.metrics,
+      assumptions: [],
+      evidence: [],
+      decisions: [],
+      testScenarios: [],
+      prototypeNotes: '',
+      outcomeNotes: '',
+      iterations: [],
+    };
+
+    try {
+      sessionStorage.setItem(STUDIO_TRANSFER_KEY, JSON.stringify({
+        schema: 'crohnoz-forge-transfer/v1',
+        createdAt: new Date().toISOString(),
+        project,
+      }));
+      window.location.assign('/studio?from=blueprint');
+    } catch {
+      showToast('El navegador bloqueó el traspaso temporal. Descarga el blueprint y abre Studio manualmente.');
+    }
+  };
+
   const selectedPriorities = () => $$('input[name="priority"]:checked').map((input) => input.value);
 
   const titleFromOutcome = (outcome) => {
@@ -320,9 +390,14 @@
     setText('#next-step-label', data.readiness.nextStep);
     setText('#next-step-note', data.readiness.nextNote);
     setText('#blueprint-state-label', 'Blueprint generado en este navegador');
-    setText('#blueprint-context', 'Resultado generado localmente a partir de lo que escribiste. Puedes ajustarlo, copiarlo o descargarlo sin enviar nada a Crohnoz Labs.');
+    setText('#blueprint-context', 'Resultado generado localmente a partir de lo que escribiste. Puedes ajustarlo, copiarlo, descargarlo o continuarlo en Forge Studio sin enviarlo a Crohnoz Labs.');
     blueprintSection.dataset.state = 'generated';
     $('#review-blueprint').value = exportBlueprint(data, true);
+    const studioButton = $('#continue-studio');
+    if (studioButton) {
+      studioButton.disabled = false;
+      studioButton.title = 'Abrir este blueprint como proyecto temporal en Forge Studio.';
+    }
   };
 
   const exportBlueprint = (data = latestBlueprint, compact = false) => {
@@ -428,6 +503,9 @@
     URL.revokeObjectURL(url);
   };
 
+  injectStudioEntryPoints();
+  $('#continue-studio')?.addEventListener('click', continueInStudio);
+
   if (form) {
     form.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -448,7 +526,7 @@
         forgeButton.removeAttribute('aria-busy');
         forgeStatus.textContent = 'BLUEPRINT LISTO';
         blueprintSection.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
-        showToast('Blueprint listo. Puedes copiarlo, descargarlo o ajustarlo.');
+        showToast('Blueprint listo. Puedes copiarlo, descargarlo o continuarlo en Studio.');
       }, reducedMotion ? 0 : 1050);
     });
   }
@@ -473,6 +551,11 @@
     $$('textarea[maxlength]').forEach((field) => field.dispatchEvent(new Event('input')));
     errorBox.hidden = true;
     forgeStatus.textContent = 'LISTO PARA FORJAR';
+    const studioButton = $('#continue-studio');
+    if (studioButton) {
+      studioButton.disabled = true;
+      studioButton.title = 'Forja un blueprint para abrirlo como proyecto en Forge Studio.';
+    }
     $('#forge').scrollIntoView({ behavior: 'smooth', block: 'start' });
     window.setTimeout(() => $('#idea').focus({ preventScroll: true }), 450);
     showToast('Formulario limpio. El blueprint anterior sigue disponible hasta que generes otro.');
