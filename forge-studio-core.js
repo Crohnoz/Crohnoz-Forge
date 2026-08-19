@@ -26,6 +26,7 @@ export function createProject(input = {}) {
     audience: input.audience || '',
     outcome: input.outcome || '',
     constraints: input.constraints || '',
+    handoffTarget: input.handoffTarget || '',
     stageIndex: 0,
     assumptions: [],
     evidence: [],
@@ -60,6 +61,7 @@ export function normalizeProject(input = {}) {
     audience: clean(input.audience),
     outcome: clean(input.outcome),
     constraints: clean(input.constraints),
+    handoffTarget: clean(input.handoffTarget),
     stageIndex,
     assumptions: Array.isArray(input.assumptions) ? input.assumptions.map(normalizeEntry).filter((item) => item.text) : [],
     evidence: Array.isArray(input.evidence) ? input.evidence.map(normalizeEntry).filter((item) => item.text) : [],
@@ -187,6 +189,7 @@ export function toMarkdown(projectInput) {
   const rows = (items, mapper = (item) => item) => items.length ? items.map((item) => `- ${mapper(item)}`).join('\n') : '- Sin registrar';
   return `# ${project.title}\n\n` +
     `**Crohnoz Forge Studio** · Etapa: ${gate.stage.label} · Readiness: ${readiness}/100\n\n` +
+    `**Destino de handoff:** ${project.handoffTarget || 'Sin definir'}\n\n` +
     `## Problema\n${project.problem || 'Sin registrar'}\n\n` +
     `## Personas\n${project.audience || 'Sin registrar'}\n\n` +
     `## Resultado esperado\n${project.outcome || 'Sin registrar'}\n\n` +
