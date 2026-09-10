@@ -1,82 +1,105 @@
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/Crohnoz/Crohnoz/main/brand/assets/logo-horizontal-dark.svg" alt="Crohnoz Labs" width="340" />
+
 # Crohnoz Forge
+
+### `L1 · Prototype / R&D`
+
+**Ideas are raw material. Forge turns ambiguity into structured product decisions before implementation begins.**
 
 [![Forge Quality](https://github.com/Crohnoz/Crohnoz-Forge/actions/workflows/quality.yml/badge.svg)](https://github.com/Crohnoz/Crohnoz-Forge/actions/workflows/quality.yml)
 
-**L1 · Prototype / R&D**
+<a href="https://crohnoz-forge.netlify.app"><img src="https://img.shields.io/badge/TRY-PUBLIC_FORGE-EC4899?style=for-the-badge" height="34" alt="Try Public Forge" /></a>
+<a href="https://crohnoz-forge.netlify.app/studio"><img src="https://img.shields.io/badge/OPEN-FORGE_STUDIO-8B5CF6?style=for-the-badge" height="34" alt="Open Forge Studio" /></a>
+<a href="https://github.com/Crohnoz/Crohnoz/blob/main/evidence/forge.md"><img src="https://img.shields.io/badge/READ-ENGINEERING_CASE-3B82F6?style=for-the-badge" height="34" alt="Read engineering case" /></a>
 
-**Ideas are raw material. Crohnoz Forge turns them into decisions before they become software.**
+**Raw → Discovery → Blueprint → Prototype → Testing → Outcome**
 
-Crohnoz Forge is the innovation workspace of Crohnoz Labs. It has two complementary surfaces: a fast public Forge that converts a plain-language problem into an exploratory blueprint, and **Forge Studio**, a local-first project workspace that carries the work from raw idea to evidence, prototype, testing and handoff.
+</div>
 
-The project is deliberately presented as **R&D**. Its current value is in validating the workflow, product boundaries and decision model rather than claiming production maturity.
+---
 
-## Product surfaces
+## Product role
+
+Crohnoz Forge is the **product-reasoning R&D workspace** inside Crohnoz Labs. It explores how a vague operational problem can become an explicit product hypothesis, evidence set, scope, prototype and decision trail before engineering effort is committed blindly.
+
+The project deliberately remains at `L1`. Its current value is proving the workflow, boundaries and decision model—not claiming sustained production use.
+
+---
+
+## What it proves at a glance
+
+| Capability | Current evidence |
+|---|---|
+| **Structured discovery** | Plain-language problems become explicit users, workflows, risks, metrics and MVP hypotheses |
+| **Evidence-driven progression** | Assumptions and observations are recorded rather than treated as facts |
+| **Stage gates** | Studio blocks progression until the current learning criteria are satisfied |
+| **Local-first privacy** | Work starts in memory; browser persistence requires explicit opt-in |
+| **Portable handoff** | Projects can leave the tool as Markdown and `.forge.json` |
+| **Product integrity** | The public generator is described accurately as deterministic/local rather than falsely marketed as connected AI |
+
+---
+
+## Two product surfaces
 
 ### Public Forge — `/`
 
-- Single-workspace idea intake with required sensitive-data warnings.
-- Optional advanced context for volume, data sensitivity and constraints.
-- Quick-start examples that populate the workspace without submitting data.
-- Browser-side deterministic blueprint generation.
-- Proposed users, workflow, MVP features, screens, risks, metrics and recommended next step.
-- Explainable readiness snapshot for potential impact and relative complexity.
-- Copy-to-clipboard and local `.txt` download actions.
-- Fictional examples clearly marked as demonstrations.
-- Human Forge Review request through Netlify Forms.
-- Independent privacy policy and publication consent disabled by default.
+A fast, browser-side exploratory blueprint surface for turning a problem statement into a first structured product view.
+
+It includes sensitive-data warnings, optional operational context, fictional quick-start examples, deterministic blueprint generation, proposed users/workflows/features/screens/risks/metrics, explainable readiness signals, local export and an optional human review request.
 
 ### Forge Studio — `/studio`
 
-Forge Studio turns the blueprint concept into an operational product workspace with a six-stage lifecycle:
+A local-first workspace for carrying product reasoning through six explicit stages:
 
 `Raw → Discovery → Blueprint → Prototype → Testing → Outcome`
 
-It includes:
+Studio includes project search, stage gates, readiness guidance, assumptions, evidence, MVP scope, success metrics, prototype notes, observable tests, decision history, iteration milestones and outcome/learning notes.
 
-- multiple local projects with search and active-project state;
-- explicit stage gates that block advancement until the current learning criteria are met;
-- Forge Readiness score and a concrete next-action recommendation;
-- assumptions register with open / validated / rejected status;
-- evidence ledger for observations, interviews, data, constraints and tests;
-- MVP scope and success metrics;
-- prototype notes and observable test scenarios;
-- decision log and iteration milestones;
-- outcome / learning notes;
-- human-readable Markdown handoff packet;
-- portable `.forge.json` import/export for moving work between browsers.
+---
 
-Persistence is **off by default**. Studio works in memory for the current session until the visitor explicitly enables local browser storage. No account, remote database, analytics SDK or automatic upload is required for the workspace.
+## Privacy and persistence model
+
+Persistence is **off by default**. Studio begins as in-memory session state until the visitor explicitly enables browser storage.
+
+The public Forge does not automatically create accounts, upload idea text or persist project content remotely. A separate Forge Review submission is the only voluntary transmission path on the public surface.
+
+Visitors are warned not to submit passwords, credentials, sensitive personal data or confidential information they are not authorized to share.
+
+---
 
 ## Product integrity
 
-The public blueprint engine is deterministic and local; Crohnoz Forge does **not** claim that an external AI model is connected. Forge Studio is likewise a workflow and decision-support product, not an undisclosed AI service.
+Forge does **not** currently claim that an external AI model generates its blueprint. The public engine is deterministic and local, while Studio is a workflow and decision-support product.
 
-If an AI-assisted layer is introduced later, it must run through a secure server-side boundary with secrets outside the public client, explicit model behavior and an updated privacy contract.
+If AI assistance is introduced later, the design contract requires a server-side boundary, secrets outside the public client, explicit model behavior and an updated privacy agreement.
 
-## Privacy model
+That distinction matters: **capability should be described by what the system actually does, not by fashionable labels**.
 
-The idea intake is processed locally in the browser. The public Forge does not create accounts or automatically persist the idea. Information is only submitted when the visitor separately completes the Forge Review form.
+---
 
-Forge Studio also starts non-persistent. Local persistence requires explicit opt-in and stays on that browser. Projects can always be exported as Markdown or `.forge.json`; disabling persistence removes the stored browser copy while leaving the current in-memory session available until navigation/reload.
+## Engineering surface
 
-Visitors are warned not to enter passwords, credentials, personal sensitive data or confidential material they are not authorized to share. A generated blueprint, readiness score or stage gate is exploratory and does not guarantee feasibility, price, delivery time, confidentiality or intellectual-property terms.
+`Semantic HTML` · `Responsive CSS` · `JavaScript / ES Modules` · `Local-first state` · `Netlify Forms` · `Security headers` · `Node validation` · `Tests` · `GitHub Actions`
 
-## Technology
+No external JavaScript, tracking SDK or production database is required by the current public product.
 
-The current product intentionally uses a small static architecture:
+<details>
+<summary><strong>Quality gates and local development</strong></summary>
 
-- semantic HTML;
-- responsive CSS with Forge v2 and Forge Studio product layers;
-- dependency-free JavaScript and ES modules;
-- localStorage only behind explicit Studio consent;
-- Netlify Forms for voluntary human review;
-- Netlify redirects and strict security headers;
-- Node validation, tests and reproducible static build;
-- GitHub Actions quality gate and preview artifact.
+<br/>
 
-No external JavaScript, tracking SDK or production database is included.
+```bash
+npm audit --audit-level=high
+npm run validate
+npm test
+npm run build
+```
 
-## Local development
+`npm run check` runs validation, tests and the reproducible build in sequence.
+
+Local preview:
 
 ```bash
 npm ci
@@ -89,47 +112,42 @@ Open:
 - `http://localhost:8000/` — Public Forge
 - `http://localhost:8000/studio` — Forge Studio
 
-## Quality gates
+The validator checks privacy/publication contracts, persistence consent, lifecycle behavior, stage-gate and handoff capabilities, CSP compatibility, same-origin scripts, deployment routes, required assets and common secret patterns.
 
-```bash
-npm audit --audit-level=high
-npm run validate
-npm test
-npm run build
-```
+</details>
 
-`npm run check` runs validation, tests and the reproducible build in sequence.
+---
 
-The validator checks public privacy/publication contracts, Studio persistence consent, the six-stage lifecycle, stage-gate/handoff capabilities, CSP compatibility, same-origin scripts, deployment routes, required assets and common secret patterns. The test suite covers lifecycle gates, readiness progression, stage advancement, iteration snapshots and portable handoff import/export.
+## Current maturity
 
-## Branch strategy
+<div align="center">
 
-- `main` — stable public branch.
-- `develop` — integrated development branch when required.
-- `feat/*` / `product/*` — isolated product work.
-- `fix/*` — corrective work.
+### `L0 IDEA → ● L1 PROTOTYPE → L2 PILOT → L3 PRODUCTION → L4 SCALE`
 
-Changes intended for the public surface should use a pull request and a Netlify Deploy Preview.
+</div>
 
-## Current limits
+Forge has not yet demonstrated the sustained real-user usage, operational continuity and production evidence needed to advance to `L2`.
 
-Forge remains a prototype. It has not yet demonstrated the sustained real-user usage, operational continuity or production evidence required to move to L2.
+The next maturity gate is therefore **evidence of repeated use in real discovery workflows**, not more visual polish.
 
-`L0 IDEA → ● L1 PROTOTYPE → L2 PILOT → L3 PRODUCTION → L4 SCALE`
+---
 
-The maturity label moves only when evidence supports it.
+## Public surfaces
 
-## Public demo
+- **Public Forge:** https://crohnoz-forge.netlify.app
+- **Forge Studio:** https://crohnoz-forge.netlify.app/studio
+- **Privacy:** https://crohnoz-forge.netlify.app/privacy
+- **Curated engineering case:** https://github.com/Crohnoz/Crohnoz/blob/main/evidence/forge.md
 
-- Public Forge: `https://crohnoz-forge.netlify.app`
-- Forge Studio: `https://crohnoz-forge.netlify.app/studio`
-- Privacy: `https://crohnoz-forge.netlify.app/privacy`
+---
 
-## Crohnoz Labs
+<div align="center">
 
-Crohnoz Forge is part of the Crohnoz Labs product-engineering portfolio.
+### Crohnoz Labs
 
 **Problem → System → Evidence → Scale**
 
-- Crohnoz profile and public evidence: https://github.com/Crohnoz
-- Crohnoz Labs: https://crohnozlabs.cl
+<a href="https://github.com/Crohnoz"><img src="https://img.shields.io/badge/RETURN-ENRIQUE_FLORES_PROFILE-8B5CF6?style=for-the-badge" height="34" alt="Return to profile" /></a>
+<a href="https://crohnozlabs.cl"><img src="https://img.shields.io/badge/ENTER-CROHNOZ_LABS-EC4899?style=for-the-badge" height="34" alt="Crohnoz Labs" /></a>
+
+</div>
