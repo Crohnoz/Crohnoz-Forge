@@ -1,8 +1,12 @@
 # Crohnoz Forge
 
+**L1 · Prototype / R&D**
+
 **Ideas are raw material. Crohnoz Forge turns them into decisions before they become software.**
 
-Crohnoz Forge is the innovation workspace of Crohnoz Labs. It now has two complementary surfaces: a fast public Forge that converts a plain-language problem into an exploratory blueprint, and **Forge Studio**, a local-first project workspace that carries the work from raw idea to evidence, prototype, testing and handoff.
+Crohnoz Forge is the innovation workspace of Crohnoz Labs. It has two complementary surfaces: a fast public Forge that converts a plain-language problem into an exploratory blueprint, and **Forge Studio**, a local-first project workspace that carries the work from raw idea to evidence, prototype, testing and handoff.
+
+The project is deliberately presented as **R&D**. Its current value is in validating the workflow, product boundaries and decision model rather than claiming production maturity.
 
 ## Product surfaces
 
@@ -98,19 +102,32 @@ The validator checks public privacy/publication contracts, Studio persistence co
 
 ## Branch strategy
 
-- `main` — stable production branch.
+- `main` — stable public branch.
 - `develop` — integrated development branch when required.
 - `feat/*` / `product/*` — isolated product work.
 - `fix/*` — corrective work.
 
-All production changes should use a pull request and a Netlify Deploy Preview.
+Changes intended for the public surface should use a pull request and a Netlify Deploy Preview.
 
-## Production
+## Current limits
+
+Forge remains a prototype. It has not yet demonstrated the sustained real-user usage, operational continuity or production evidence required to move to L2.
+
+`L0 IDEA → ● L1 PROTOTYPE → L2 PILOT → L3 PRODUCTION → L4 SCALE`
+
+The maturity label moves only when evidence supports it.
+
+## Public demo
 
 - Public Forge: `https://crohnoz-forge.netlify.app`
 - Forge Studio: `https://crohnoz-forge.netlify.app/studio`
 - Privacy: `https://crohnoz-forge.netlify.app/privacy`
 
----
+## Crohnoz Labs
 
-Crohnoz Forge is a Crohnoz Labs initiative. All rights reserved.
+Crohnoz Forge is part of the Crohnoz Labs product-engineering portfolio.
+
+**Problem → System → Evidence → Scale**
+
+- Crohnoz profile and public evidence: https://github.com/Crohnoz
+- Crohnoz Labs: https://crohnozlabs.cl
