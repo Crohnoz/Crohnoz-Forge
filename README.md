@@ -1,5 +1,7 @@
 # Crohnoz Forge
 
+[![Forge Quality](https://github.com/Crohnoz/Crohnoz-Forge/actions/workflows/quality.yml/badge.svg)](https://github.com/Crohnoz/Crohnoz-Forge/actions/workflows/quality.yml)
+
 **L1 · Prototype / R&D**
 
 **Ideas are raw material. Crohnoz Forge turns them into decisions before they become software.**
