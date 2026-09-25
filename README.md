@@ -66,6 +66,8 @@ Persistence is **off by default**. Studio begins as in-memory session state unti
 
 The public Forge does not automatically create accounts, upload idea text or persist project content remotely. A separate Forge Review submission is the only voluntary transmission path on the public surface.
 
+Blueprint input is **processed locally in the browser** unless the visitor deliberately submits a Forge Review request.
+
 Visitors are warned not to submit passwords, credentials, sensitive personal data or confidential information they are not authorized to share.
 
 ---
