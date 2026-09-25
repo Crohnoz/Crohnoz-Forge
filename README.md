@@ -13,6 +13,7 @@
 <a href="https://crohnoz-forge.netlify.app"><img src="https://img.shields.io/badge/TRY-PUBLIC_FORGE-EC4899?style=for-the-badge" height="34" alt="Try Public Forge" /></a>
 <a href="https://crohnoz-forge.netlify.app/studio"><img src="https://img.shields.io/badge/OPEN-FORGE_STUDIO-8B5CF6?style=for-the-badge" height="34" alt="Open Forge Studio" /></a>
 <a href="https://github.com/Crohnoz/Crohnoz/blob/main/evidence/forge.md"><img src="https://img.shields.io/badge/READ-ENGINEERING_CASE-3B82F6?style=for-the-badge" height="34" alt="Read engineering case" /></a>
+<a href="https://crohnozlabs.cl"><img src="https://img.shields.io/badge/CROHNOZ-LABS-06B6D4?style=for-the-badge" height="34" alt="Crohnoz Labs" /></a>
 
 **Raw → Discovery → Blueprint → Prototype → Testing → Outcome**
 
@@ -64,6 +65,8 @@ Studio includes project search, stage gates, readiness guidance, assumptions, ev
 Persistence is **off by default**. Studio begins as in-memory session state until the visitor explicitly enables browser storage.
 
 The public Forge does not automatically create accounts, upload idea text or persist project content remotely. A separate Forge Review submission is the only voluntary transmission path on the public surface.
+
+Blueprint input is **processed locally in the browser** unless the visitor deliberately submits a Forge Review request.
 
 Visitors are warned not to submit passwords, credentials, sensitive personal data or confidential information they are not authorized to share.
 
